@@ -515,4 +515,8 @@ def server_error(e):
 if __name__ == '__main__':
     # Muat KB saat aplikasi dimulai
     load_knowledge_base()
-    app.run(debug=DEBUG)
+    # For Render deployment, Gunicorn will serve the app
+    # app.run(debug=DEBUG)
+    # Use the PORT environment variable provided by Render
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=DEBUG)

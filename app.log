@@ -371,3 +371,39 @@
 2025-05-23 21:47:45,647 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:47:45] "GET /panduan HTTP/1.1" 200 -
 2025-05-23 21:48:03,521 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
 2025-05-23 21:48:03,522 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:48:03] "GET / HTTP/1.1" 200 -
+2025-05-24 11:17:55,537 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 11:17:55,580 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-24 11:17:55,580 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-24 11:17:55,581 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 11:17:55,800 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 11:17:55,827 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 11:17:55,832 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-24 11:17:59,840 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:17:59] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-24 11:18:02,026 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 11:18:02,029 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:02] "GET / HTTP/1.1" 200 -
+2025-05-24 11:18:03,662 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:03] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-24 11:18:05,183 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 11:18:05,184 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:05] "GET / HTTP/1.1" 200 -
+2025-05-24 11:18:06,260 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:06] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-24 11:18:07,463 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 11:18:07,464 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:07] "GET / HTTP/1.1" 200 -
+2025-05-24 11:18:08,754 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:08] "GET /kalkulator HTTP/1.1" 200 -
+2025-05-24 11:18:12,341 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:12] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-24 11:18:13,065 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:13] "GET /budidaya HTTP/1.1" 200 -
+2025-05-24 11:18:13,763 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:13] "GET /kalkulator HTTP/1.1" 200 -
+2025-05-24 11:18:15,455 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:15] "GET /search HTTP/1.1" 200 -
+2025-05-24 11:18:16,628 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:16] "GET /panduan HTTP/1.1" 200 -
+2025-05-24 11:18:17,330 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:17] "GET /riwayat HTTP/1.1" 200 -
+2025-05-24 11:18:18,053 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 11:18:18,055 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:18] "[32mGET /refresh_kb HTTP/1.1[0m" 302 -
+2025-05-24 11:18:18,064 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 11:18:18,065 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:18] "GET / HTTP/1.1" 200 -
+2025-05-24 11:18:18,987 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:18] "GET /riwayat HTTP/1.1" 200 -
+2025-05-24 11:18:21,925 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 11:18:21,926 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 11:18:21] "GET / HTTP/1.1" 200 -
+2025-05-24 11:20:32,115 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-24 11:20:32,181 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 11:20:32,683 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 11:20:32,744 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 11:20:32,751 - werkzeug - INFO -  * Debugger PIN: 139-055-553
