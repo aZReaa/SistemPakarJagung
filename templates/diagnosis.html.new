@@ -1,0 +1,133 @@
+<!-- filepath: c:\laragon\www\jagung\templates\diagnosis.html -->
+{% extends "base.html" %}
+
+{% block title %}Diagnosis Penyakit Jagung{% endblock %}
+
+{% block extra_css %}
+<style>
+    .gejala-list {
+        max-height: 450px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #fcfcfc;
+    }
+    
+    .form-check {
+        padding: 10px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        transition: background-color 0.2s;
+    }
+    
+    .form-check:hover {
+        background-color: #f0f0f0;
+    }
+    
+    .form-check-input:checked + .form-check-label {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+    
+    .diagnosis-tips {
+        background-color: #e8f4e3;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .symptoms-counter {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-success text-white text-center">
+        <h1>Diagnosis Penyakit & Hama Jagung</h1>
+    </div>
+    <div class="card-body p-4">
+        <div class="diagnosis-tips mb-4">
+            <h5><i class="fas fa-info-circle me-2"></i>Petunjuk Penggunaan</h5>
+            <p>Pilih semua gejala yang Anda amati pada tanaman jagung untuk mendapatkan diagnosis yang akurat.</p>
+        </div>
+        
+        <form action="/hasil_diagnosis" method="POST" id="diagnosisForm">
+            <h5>
+                Gejala yang diamati
+                <span class="symptoms-counter" id="counter">0</span>
+            </h5>
+            
+            <div class="mb-3 gejala-list">
+                {% for code, desc in gejala.items() %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="{{ code }}" id="{{ code }}" name="gejala_check">
+                    <label class="form-check-label" for="{{ code }}">
+                        {{ desc }}
+                        <span class="text-muted small">({{ code }})</span>
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div id="validation-message" class="alert alert-warning d-none mb-3">
+                <i class="fas fa-exclamation-triangle me-2"></i>Pilih setidaknya satu gejala untuk melakukan diagnosis
+            </div>
+            
+            <button type="submit" class="btn btn-success w-100 py-2" id="diagnosisButton">
+                <i class="fas fa-search me-2"></i>Diagnosis Sekarang
+            </button>
+            <a href="/" class="btn btn-outline-secondary w-100 mt-2 py-2">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Menu
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.form-check-input');
+    const counter = document.getElementById('counter');
+    const form = document.getElementById('diagnosisForm');
+    const validationMessage = document.getElementById('validation-message');
+    
+    function updateCounter() {
+        const checked = document.querySelectorAll('.form-check-input:checked').length;
+        counter.textContent = checked;
+        
+        // Show/hide validation message
+        if (checked === 0) {
+            validationMessage.classList.remove('d-none');
+        } else {
+            validationMessage.classList.add('d-none');
+        }
+    }
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateCounter);
+    });
+    
+    // Form validation
+    form.addEventListener('submit', function(e) {
+        const checked = document.querySelectorAll('.form-check-input:checked').length;
+        if (checked === 0) {
+            e.preventDefault();
+            validationMessage.classList.remove('d-none');
+            window.scrollTo({top: validationMessage.offsetTop - 100, behavior: 'smooth'});
+        }
+    });
+    
+    // Initial counter update
+    updateCounter();
+});
+</script>
+{% endblock %}

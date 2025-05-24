@@ -1,0 +1,523 @@
+{% extends "base.html" %}
+
+{% block title %}Riwayat Konsultasi - Sistem Pakar Jagung{% endblock %}
+
+{% block extra_css %}
+<style>
+    .history-card {
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s;
+    }
+    
+    .history-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .history-card .card-header {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .history-card .card-title {
+        margin-bottom: 0;
+        color: var(--primary-color);
+    }
+    
+    .history-type-badge {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    
+    .history-date {
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+    
+    .history-empty {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #6c757d;
+    }
+    
+    .history-empty i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #dee2e6;
+    }
+    
+    .history-filter {
+        margin-bottom: 1.5rem;
+    }
+    
+    .detail-section {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #dee2e6;
+    }
+    
+    .detail-row {
+        display: flex;
+        margin-bottom: 0.5rem;
+    }
+    
+    .detail-label {
+        font-weight: 500;
+        width: 40%;
+    }
+    
+    .detail-value {
+        width: 60%;
+    }
+    
+    .clear-history-btn {
+        margin-top: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0 text-center"><i class="fas fa-history me-2"></i>Riwayat Konsultasi</h2>
+    </div>
+    <div class="card-body p-4">
+        <p class="lead">Lihat hasil konsultasi pemupukan dan diagnosis penyakit terdahulu yang tersimpan di perangkat Anda.</p>
+        
+        <div class="history-filter">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="showFertilizerHistory" checked>
+                        <label class="form-check-label" for="showFertilizerHistory">Rekomendasi Pemupukan</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="showDiagnosisHistory" checked>
+                        <label class="form-check-label" for="showDiagnosisHistory">Diagnosis Penyakit</label>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button id="clearAllHistoryBtn" class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-trash me-1"></i>Hapus Semua Riwayat
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="historyContainer">
+            <!-- History items will be displayed here -->
+            <div class="history-empty" id="emptyHistory">
+                <i class="fas fa-folder-open"></i>
+                <h4>Belum Ada Riwayat Konsultasi</h4>
+                <p>Riwayat konsultasi pemupukan dan diagnosis penyakit akan muncul di sini setelah Anda menggunakan fitur tersebut.</p>
+            </div>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Menu
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- History Preview Modal -->
+<div class="modal fade" id="historyPreviewModal" tabindex="-1" aria-labelledby="historyPreviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="historyPreviewModalLabel">Detail Riwayat Konsultasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="historyPreviewContent">
+                <!-- Content will be populated dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load history from localStorage
+        loadHistory();
+        
+        // Set up event listeners
+        document.getElementById('showFertilizerHistory').addEventListener('change', filterHistory);
+        document.getElementById('showDiagnosisHistory').addEventListener('change', filterHistory);
+        document.getElementById('clearAllHistoryBtn').addEventListener('click', clearAllHistory);
+    });
+    
+    function loadHistory() {
+        const historyContainer = document.getElementById('historyContainer');
+        const emptyHistory = document.getElementById('emptyHistory');
+        
+        // Get history from localStorage
+        let fertilizerHistory = JSON.parse(localStorage.getItem('jagungFertilizerHistory')) || [];
+        let diagnosisHistory = JSON.parse(localStorage.getItem('jagungDiagnosisHistory')) || [];
+        
+        // Combine and sort by date (newest first)
+        let allHistory = [
+            ...fertilizerHistory.map(item => ({...item, type: 'fertilizer'})),
+            ...diagnosisHistory.map(item => ({...item, type: 'diagnosis'}))
+        ];
+        
+        allHistory.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        
+        // Check if there's any history
+        if (allHistory.length === 0) {
+            emptyHistory.style.display = 'block';
+            return;
+        }
+        
+        // Hide empty message
+        emptyHistory.style.display = 'none';
+        
+        // Clear previous content
+        while (historyContainer.firstChild !== emptyHistory) {
+            historyContainer.removeChild(historyContainer.firstChild);
+        }
+          // Display history items
+        allHistory.forEach((item, index) => {
+            const historyCard = document.createElement('div');
+            historyCard.className = `card history-card ${item.type}-history`;
+            historyCard.dataset.type = item.type;
+            
+            const formattedDate = new Date(item.timestamp).toLocaleString('id-ID', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            if (item.type === 'fertilizer') {
+                // Fertilizer history card
+                historyCard.innerHTML = `
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            <span class="history-type-badge bg-primary text-white">Pemupukan</span>
+                            ${item.data.rekomendasi}
+                        </h5>
+                        <span class="history-date">${formattedDate}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="detail-section">
+                            <div class="detail-row">
+                                <div class="detail-label">Umur Tanaman:</div>
+                                <div class="detail-value">${item.data.umur} HST</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Gejala Tanaman:</div>
+                                <div class="detail-value">${item.data.gejala_input}</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Jenis Tanah:</div>
+                                <div class="detail-value">${item.data.tanah_input}</div>
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <button class="btn btn-sm btn-outline-primary view-details" data-index="${index}" data-type="fertilizer">
+                                <i class="fas fa-eye me-1"></i>Lihat Detail
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-history" data-index="${index}" data-type="fertilizer">
+                                <i class="fas fa-trash me-1"></i>Hapus
+                            </button>
+                        </div>                    </div>
+                `;
+            } else if (item.type === 'diagnosis') {
+                // Diagnosis history card
+                const diagnosisName = item.data.utama ? item.data.utama.nama : item.data.nama;
+                const diagnosisSolution = item.data.utama ? item.data.utama.solusi : item.data.solusi;
+                const matchRate = item.data.utama ? 
+                                 (item.data.utama.skor * 100).toFixed(0) + '%' :
+                                 (item.data.skor && item.data.skor > 0 ? (item.data.skor * 100).toFixed(0) + '%' : 'N/A');
+                
+                historyCard.innerHTML = `
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            <span class="history-type-badge bg-success text-white">Diagnosis</span>
+                            ${diagnosisName}
+                        </h5>
+                        <span class="history-date">${formattedDate}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="detail-section">
+                            <div class="detail-row">
+                                <div class="detail-label">Tingkat Kecocokan:</div>
+                                <div class="detail-value">${matchRate}</div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-label">Saran Penanganan:</div>
+                                <div class="detail-value">${diagnosisSolution}</div>
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <button class="btn btn-sm btn-outline-success view-details" data-index="${index}" data-type="diagnosis">
+                                <i class="fas fa-eye me-1"></i>Lihat Detail
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger delete-history" data-index="${index}" data-type="diagnosis">
+                                <i class="fas fa-trash me-1"></i>Hapus
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            historyContainer.insertBefore(historyCard, emptyHistory);
+        });
+        
+        // Add event listeners to delete buttons
+        document.querySelectorAll('.delete-history').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                const type = this.getAttribute('data-type');
+                deleteHistoryItem(index, type);
+            });
+        });
+        
+        // Add event listeners to view details buttons
+        document.querySelectorAll('.view-details').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                const type = this.getAttribute('data-type');
+                showHistoryDetails(index, type);
+            });
+        });
+    }
+    
+    function showHistoryDetails(index, type) {
+        // Get all history items
+        let allHistory = [
+            ...JSON.parse(localStorage.getItem('jagungFertilizerHistory') || '[]').map(item => ({...item, type: 'fertilizer'})),
+            ...JSON.parse(localStorage.getItem('jagungDiagnosisHistory') || '[]').map(item => ({...item, type: 'diagnosis'}))
+        ];
+        allHistory.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        
+        // Get selected history item        const item = allHistory[index];
+        if (!item) return;
+        
+        // Get modal elements
+        const modalEl = document.getElementById('historyPreviewModal');
+        const modalTitle = document.getElementById('historyPreviewModalLabel');
+        const modalContent = document.getElementById('historyPreviewContent');
+        
+        // Create modal instance
+        let modal;
+        if (typeof bootstrap !== 'undefined') {
+            modal = new bootstrap.Modal(modalEl);
+        } else {
+            console.error('Bootstrap library not loaded');
+            // Basic fallback - add show class
+            modalEl.classList.add('show');
+            modalEl.style.display = 'block';
+            document.body.classList.add('modal-open');
+            
+            // Add a close handler for the close button
+            modalEl.querySelector('.btn-close').addEventListener('click', function() {
+                modalEl.classList.remove('show');
+                modalEl.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            });
+            
+            // Add a close handler for the close button in footer
+            modalEl.querySelector('.modal-footer .btn-secondary').addEventListener('click', function() {
+                modalEl.classList.remove('show');
+                modalEl.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            });
+        }
+        
+        // Format date
+        const formattedDate = new Date(item.timestamp).toLocaleString('id-ID', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        
+        // Set modal title
+        if (item.type === 'fertilizer') {
+            modalTitle.innerHTML = `<i class="fas fa-flask me-2"></i>Detail Rekomendasi Pemupukan`;
+        } else if (item.type === 'diagnosis') {
+            modalTitle.innerHTML = `<i class="fas fa-viruses me-2"></i>Detail Diagnosis Penyakit`;
+        }
+        
+        // Build modal content
+        let contentHtml = `<div class="mb-3 text-muted"><i class="fas fa-calendar-alt me-2"></i>${formattedDate}</div>`;
+        
+        if (item.type === 'fertilizer') {
+            contentHtml += `
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">${item.data.rekomendasi}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <strong>Umur Tanaman:</strong> ${item.data.umur} HST
+                                </div>
+                                <div class="mb-3">
+                                    <strong>Gejala Tanaman:</strong> ${item.data.gejala_input}
+                                </div>
+                                <div class="mb-3">
+                                    <strong>Jenis Tanah:</strong> ${item.data.tanah_input}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <strong>Urea:</strong> ${item.data.urea}
+                                </div>
+                                <div class="mb-3">
+                                    <strong>SP-36:</strong> ${item.data.sp36}
+                                </div>
+                                <div class="mb-3">
+                                    <strong>KCl:</strong> ${item.data.kcl}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <strong>Cara Aplikasi:</strong>
+                            <p>${item.data.cara}</p>
+                        </div>
+                        ${item.data.catatan ? 
+                            `<div class="alert alert-warning mt-3">
+                                <strong>Catatan:</strong> ${item.data.catatan}
+                            </div>` : ''}
+                    </div>
+                </div>
+            `;
+        } else if (item.type === 'diagnosis') {
+            const diagnosisData = item.data.utama || item.data;
+            const matchRate = diagnosisData.skor ? (diagnosisData.skor * 100).toFixed(0) + '%' : 'N/A';
+            
+            contentHtml += `
+                <div class="card mb-3">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">${diagnosisData.nama}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <strong>Tingkat Kecocokan:</strong> 
+                            <span class="badge bg-success">${matchRate}</span>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Saran Penanganan:</strong>
+                            <p>${diagnosisData.solusi}</p>
+                        </div>
+                        ${diagnosisData.gejala_cocok_desc ? `
+                        <div class="mb-3">
+                            <strong>Gejala yang Cocok:</strong>
+                            <ul class="list-group mt-2">
+                                ${diagnosisData.gejala_cocok_desc.map(gejala => 
+                                    `<li class="list-group-item">${gejala}</li>`
+                                ).join('')}
+                            </ul>
+                        </div>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            if (item.data.alternatif && item.data.alternatif.length > 0) {
+                contentHtml += `
+                    <div class="mt-4 mb-2">
+                        <h5>Kemungkinan Alternatif:</h5>
+                    </div>
+                `;
+                
+                item.data.alternatif.forEach(alt => {
+                    const altMatchRate = alt.skor ? (alt.skor * 100).toFixed(0) + '%' : 'N/A';
+                    contentHtml += `
+                        <div class="card mb-2" style="border-left: 5px solid #ffc107;">
+                            <div class="card-body py-2">
+                                <h6 class="mb-1">
+                                    ${alt.nama}
+                                    <span class="badge bg-warning text-dark">${altMatchRate}</span>
+                                </h6>
+                                <p class="mb-0">${alt.solusi}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+          // Set modal content
+        modalContent.innerHTML = contentHtml;
+        
+        // Show the modal
+        if (typeof modal !== 'undefined' && modal.show) {
+            modal.show();
+        }
+    }
+    
+    function filterHistory() {
+        const showFertilizer = document.getElementById('showFertilizerHistory').checked;
+        const showDiagnosis = document.getElementById('showDiagnosisHistory').checked;
+        
+        document.querySelectorAll('.fertilizer-history').forEach(item => {
+            item.style.display = showFertilizer ? 'block' : 'none';
+        });
+        
+        document.querySelectorAll('.diagnosis-history').forEach(item => {
+            item.style.display = showDiagnosis ? 'block' : 'none';
+        });
+        
+        // Check if any items are visible
+        const visibleItems = document.querySelectorAll('.history-card[style="display: block;"]');
+        if (visibleItems.length === 0 && (showFertilizer || showDiagnosis)) {
+            document.getElementById('emptyHistory').style.display = 'block';
+        } else {
+            document.getElementById('emptyHistory').style.display = 'none';
+        }
+    }
+    
+    function deleteHistoryItem(index, type) {
+        if (confirm('Apakah Anda yakin ingin menghapus riwayat ini?')) {
+            // Get the appropriate history array
+            const historyKey = type === 'fertilizer' ? 'jagungFertilizerHistory' : 'jagungDiagnosisHistory';
+            let history = JSON.parse(localStorage.getItem(historyKey)) || [];
+            
+            // Find the actual index in the original array
+            let originalIndex = -1;
+            let allHistory = [
+                ...JSON.parse(localStorage.getItem('jagungFertilizerHistory') || '[]').map(item => ({...item, type: 'fertilizer'})),
+                ...JSON.parse(localStorage.getItem('jagungDiagnosisHistory') || '[]').map(item => ({...item, type: 'diagnosis'}))
+            ];
+            allHistory.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            if (allHistory[index] && allHistory[index].type === type) {
+                const targetTimestamp = allHistory[index].timestamp;
+                originalIndex = history.findIndex(item => item.timestamp === targetTimestamp);
+            }
+            
+            if (originalIndex !== -1) {
+                // Remove the item
+                history.splice(originalIndex, 1);
+                
+                // Save back to localStorage
+                localStorage.setItem(historyKey, JSON.stringify(history));
+                
+                // Reload the history display
+                loadHistory();
+            }
+        }
+    }
+    
+    function clearAllHistory() {
+        if (confirm('Apakah Anda yakin ingin menghapus seluruh riwayat konsultasi? Tindakan ini tidak dapat dibatalkan.')) {
+            localStorage.removeItem('jagungFertilizerHistory');
+            localStorage.removeItem('jagungDiagnosisHistory');
+            loadHistory();
+        }
+    }
+</script>
+{% endblock %}

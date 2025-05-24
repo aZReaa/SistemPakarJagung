@@ -1,0 +1,678 @@
+{% extends "base.html" %}
+
+{% block title %}Kalkulator Kebutuhan Benih dan Pupuk Jagung{% endblock %}
+
+{% block extra_css %}
+<style>
+    .calculator-section {
+        margin-bottom: 2rem;
+    }
+    
+    .calculator-section h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 0.5rem;
+    }
+    
+    .result-card {
+        background-color: #f8f9fa;
+        border-left: 5px solid var(--primary-color);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 5px;
+        display: none;
+    }
+    
+    .result-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .result-table {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .result-table th {
+        background-color: #e8f4e3;
+    }
+    
+    .info-card {
+        background-color: #e8f4e3;
+        border-left: 5px solid var(--primary-color);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 5px;
+    }
+    
+    .form-label {
+        font-weight: 500;
+    }
+    
+    .form-select, .form-control {
+        border-radius: 0.5rem;
+    }
+    
+    .notification-section {
+        margin-top: 3rem;
+    }
+    
+    .notification-card {
+        background-color: #fff8e1;
+        border-left: 5px solid var(--secondary-color);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 5px;
+    }
+    
+    #notificationsContainer {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    
+    .notification-item {
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .notification-item:last-child {
+        border-bottom: none;
+    }
+    
+    .notification-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+    
+    .notification-title {
+        font-weight: 600;
+    }
+    
+    .notification-date {
+        font-size: 0.8rem;
+        color: #6c757d;
+    }
+    
+    .notification-message {
+        margin-bottom: 0.5rem;
+    }
+    
+    .notification-actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h2 class="mb-0 text-center"><i class="fas fa-calculator me-2"></i>Kalkulator Kebutuhan Benih & Pupuk</h2>
+            </div>
+            <div class="card-body p-4">
+                
+                <ul class="nav nav-tabs mb-4" id="calculatorTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="seed-tab" data-bs-toggle="tab" data-bs-target="#seed" type="button" role="tab" aria-controls="seed" aria-selected="true">Kebutuhan Benih</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="fertilizer-tab" data-bs-toggle="tab" data-bs-target="#fertilizer" type="button" role="tab" aria-controls="fertilizer" aria-selected="false">Kebutuhan Pupuk</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="calculatorTabContent">
+                    <!-- KALKULATOR BENIH -->
+                    <div class="tab-pane fade show active" id="seed" role="tabpanel" aria-labelledby="seed-tab">
+                        <div class="calculator-section">
+                            <h3>Kalkulator Kebutuhan Benih</h3>
+                            <p>Hitung kebutuhan benih jagung berdasarkan luas lahan dan jarak tanam yang digunakan.</p>
+                            
+                            <form id="seedCalculatorForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="landArea" class="form-label">Luas Lahan (m²)</label>
+                                        <input type="number" class="form-control" id="landArea" min="1" required>
+                                        <div class="form-text">Masukkan luas lahan dalam meter persegi</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="landAreaUnit" class="form-label">Satuan Luas</label>
+                                        <select class="form-select" id="landAreaUnit">
+                                            <option value="m2">Meter Persegi (m²)</option>
+                                            <option value="ha">Hektar (ha)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="rowSpacing" class="form-label">Jarak Antar Baris (cm)</label>
+                                        <input type="number" class="form-control" id="rowSpacing" min="1" value="75" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="plantSpacing" class="form-label">Jarak Antar Tanaman (cm)</label>
+                                        <input type="number" class="form-control" id="plantSpacing" min="1" value="20" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="seedsPerHole" class="form-label">Jumlah Benih per Lubang</label>
+                                        <input type="number" class="form-control" id="seedsPerHole" min="1" max="5" value="1" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="seedWeight" class="form-label">Berat Rata-rata Benih (gram)</label>
+                                        <input type="number" class="form-control" id="seedWeight" min="0.1" step="0.1" value="0.3" required>
+                                        <div class="form-text">Berat rata-rata per biji jagung</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-success" id="calculateSeedBtn">
+                                        <i class="fas fa-calculator me-2"></i>Hitung Kebutuhan Benih
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <div class="result-card" id="seedResult">
+                                <h4>Hasil Perhitungan Kebutuhan Benih</h4>
+                                <table class="table result-table">
+                                    <tbody>
+                                        <tr>
+                                            <th>Luas Lahan</th>
+                                            <td id="resultLandArea">-</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Jarak Tanam</th>
+                                            <td id="resultPlantingDistance">-</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Jumlah Lubang Tanam</th>
+                                            <td id="resultHoleCount">-</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Jumlah Benih Dibutuhkan</th>
+                                            <td id="resultSeedCount">-</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Berat Benih Dibutuhkan</th>
+                                            <td id="resultSeedWeight">-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <div class="info-card">
+                                    <h5><i class="fas fa-info-circle me-2"></i>Catatan</h5>
+                                    <p id="seedResultNote">Perhitungan ini adalah estimasi. Tambahkan 10-15% sebagai cadangan untuk antisipasi benih yang tidak tumbuh atau rusak.</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <!-- KALKULATOR PUPUK -->
+                    <div class="tab-pane fade" id="fertilizer" role="tabpanel" aria-labelledby="fertilizer-tab">
+                        <div class="calculator-section">
+                            <h3>Kalkulator Kebutuhan Pupuk</h3>
+                            <p>Hitung kebutuhan pupuk berdasarkan luas lahan dan jenis tanah Anda.</p>
+                            
+                            <form id="fertilizerCalculatorForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="landAreaFert" class="form-label">Luas Lahan (m²)</label>
+                                        <input type="number" class="form-control" id="landAreaFert" min="1" required>
+                                        <div class="form-text">Masukkan luas lahan dalam meter persegi</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="landAreaUnitFert" class="form-label">Satuan Luas</label>
+                                        <select class="form-select" id="landAreaUnitFert">
+                                            <option value="m2">Meter Persegi (m²)</option>
+                                            <option value="ha">Hektar (ha)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="soilType" class="form-label">Jenis Tanah</label>
+                                        <select class="form-select" id="soilType">
+                                            <option value="rendah">Tanah Miskin Hara</option>
+                                            <option value="sedang" selected>Tanah Sedang</option>
+                                            <option value="tinggi">Tanah Subur</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="plantingPhase" class="form-label">Fase Pertumbuhan</label>
+                                        <select class="form-select" id="plantingPhase">
+                                            <option value="dasar">Pemupukan Dasar (0 HST)</option>
+                                            <option value="vegetatif">Fase Vegetatif (15-30 HST)</option>
+                                            <option value="generatif">Fase Generatif (45-60 HST)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-success" id="calculateFertilizerBtn">
+                                        <i class="fas fa-calculator me-2"></i>Hitung Kebutuhan Pupuk
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <div class="result-card" id="fertilizerResult">
+                                <h4>Hasil Perhitungan Kebutuhan Pupuk</h4>
+                                <table class="table result-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Jenis Pupuk</th>
+                                            <th>Kebutuhan (kg)</th>
+                                            <th>Dosis per Hektar (kg/ha)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Urea</td>
+                                            <td id="resultUrea">-</td>
+                                            <td id="resultUreaHa">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SP-36</td>
+                                            <td id="resultSP36">-</td>
+                                            <td id="resultSP36Ha">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>KCl</td>
+                                            <td id="resultKCl">-</td>
+                                            <td id="resultKClHa">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pupuk Organik</td>
+                                            <td id="resultOrganic">-</td>
+                                            <td id="resultOrganicHa">-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <div class="info-card">
+                                    <h5><i class="fas fa-info-circle me-2"></i>Rekomendasi Aplikasi</h5>
+                                    <p id="fertilizerResultNote">Aplikasikan pupuk dengan cara dibenamkan di samping tanaman dengan jarak sekitar 5-7 cm dari pangkal batang dan kedalaman 5-10 cm.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                    <a href="/" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Kembali ke Menu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card notification-section">
+            <div class="card-header bg-warning text-dark">
+                <h3 class="mb-0"><i class="fas fa-bell me-2"></i>Pengingat Budidaya</h3>
+            </div>
+            <div class="card-body">
+                <p>Kelola pengingat untuk kegiatan budidaya jagung Anda. Data disimpan di perangkat Anda.</p>
+                
+                <form id="notificationForm" class="mb-3">
+                    <div class="mb-3">
+                        <label for="activityType" class="form-label">Jenis Kegiatan</label>
+                        <select class="form-select" id="activityType" required>
+                            <option value="" selected disabled>Pilih Jenis Kegiatan</option>
+                            <option value="pemupukan">Pemupukan</option>
+                            <option value="penyemprotan">Penyemprotan Pestisida</option>
+                            <option value="pengairan">Pengairan</option>
+                            <option value="penyiangan">Penyiangan Gulma</option>
+                            <option value="panen">Panen</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="notificationDate" class="form-label">Tanggal Kegiatan</label>
+                        <input type="date" class="form-control" id="notificationDate" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="notificationNotes" class="form-label">Catatan (opsional)</label>
+                        <textarea class="form-control" id="notificationNotes" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-warning" id="addNotificationBtn">
+                            <i class="fas fa-plus me-2"></i>Tambah Pengingat
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="notification-card">
+                    <h5><i class="fas fa-list me-2"></i>Daftar Pengingat</h5>
+                    <div id="notificationsContainer">
+                        <p id="emptyNotification" class="text-center text-muted">Belum ada pengingat yang ditambahkan</p>
+                        <!-- Notification items will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Seed Calculator
+        document.getElementById('calculateSeedBtn').addEventListener('click', calculateSeedNeeds);
+        
+        // Fertilizer Calculator
+        document.getElementById('calculateFertilizerBtn').addEventListener('click', calculateFertilizerNeeds);
+        
+        // Notification System
+        document.getElementById('addNotificationBtn').addEventListener('click', addNotification);
+        
+        // Load existing notifications
+        loadNotifications();
+        
+        // Tab activation
+        const triggerTabList = [].slice.call(document.querySelectorAll('#calculatorTab button'));
+        triggerTabList.forEach(function(triggerEl) {
+            const tabTrigger = new bootstrap.Tab(triggerEl);
+            
+            triggerEl.addEventListener('click', function(event) {
+                event.preventDefault();
+                tabTrigger.show();
+            });
+        });
+    });
+    
+    // Seed Calculator Functions
+    function calculateSeedNeeds() {
+        // Get input values
+        const landArea = parseFloat(document.getElementById('landArea').value);
+        const landAreaUnit = document.getElementById('landAreaUnit').value;
+        const rowSpacing = parseFloat(document.getElementById('rowSpacing').value);
+        const plantSpacing = parseFloat(document.getElementById('plantSpacing').value);
+        const seedsPerHole = parseInt(document.getElementById('seedsPerHole').value);
+        const seedWeight = parseFloat(document.getElementById('seedWeight').value);
+        
+        // Validate inputs
+        if (isNaN(landArea) || landArea <= 0 || isNaN(rowSpacing) || rowSpacing <= 0 || 
+            isNaN(plantSpacing) || plantSpacing <= 0 || isNaN(seedsPerHole) || seedsPerHole <= 0) {
+            alert('Mohon isi semua data dengan benar');
+            return;
+        }
+        
+        // Convert to square meters if needed
+        let areaInSquareMeters = landArea;
+        if (landAreaUnit === 'ha') {
+            areaInSquareMeters = landArea * 10000;
+        }
+        
+        // Calculate the number of planting holes
+        const rowSpacingMeters = rowSpacing / 100;
+        const plantSpacingMeters = plantSpacing / 100;
+        const holeCount = Math.ceil(areaInSquareMeters / (rowSpacingMeters * plantSpacingMeters));
+        
+        // Calculate seed needs
+        const seedCount = holeCount * seedsPerHole;
+        const seedWeightKg = (seedCount * seedWeight) / 1000;
+        
+        // Display results
+        document.getElementById('resultLandArea').textContent = landArea + " " + (landAreaUnit === 'ha' ? 'hektar' : 'm²');
+        document.getElementById('resultPlantingDistance').textContent = rowSpacing + " cm × " + plantSpacing + " cm";
+        document.getElementById('resultHoleCount').textContent = holeCount.toLocaleString() + " lubang";
+        document.getElementById('resultSeedCount').textContent = seedCount.toLocaleString() + " benih";
+        document.getElementById('resultSeedWeight').textContent = seedWeightKg.toFixed(2) + " kg";
+        
+        // Show result card
+        document.getElementById('seedResult').style.display = 'block';
+        
+        // Create notification option
+        const seedNoteDate = new Date();
+        seedNoteDate.setDate(seedNoteDate.getDate() + 7); // Set default to a week from now
+        const seedNoteFormatted = seedNoteDate.toISOString().split('T')[0];
+        
+        // Add custom note based on calculation
+        let customNote = "";
+        if (seedCount > 10000) {
+            customNote = "Berdasarkan luas lahan yang besar, sebaiknya pembibitan dilakukan secara bertahap.";
+        } else if (seedWeightKg > 5) {
+            customNote = "Kebutuhan benih cukup banyak, pastikan memiliki cadangan 10-15% untuk antisipasi benih yang tidak tumbuh.";
+        } else {
+            customNote = "Perhitungan ini adalah estimasi. Tambahkan 10-15% sebagai cadangan untuk antisipasi benih yang tidak tumbuh atau rusak.";
+        }
+        
+        document.getElementById('seedResultNote').textContent = customNote;
+    }
+    
+    // Fertilizer Calculator Functions
+    function calculateFertilizerNeeds() {
+        // Get input values
+        const landArea = parseFloat(document.getElementById('landAreaFert').value);
+        const landAreaUnit = document.getElementById('landAreaUnitFert').value;
+        const soilType = document.getElementById('soilType').value;
+        const plantingPhase = document.getElementById('plantingPhase').value;
+        
+        // Validate inputs
+        if (isNaN(landArea) || landArea <= 0) {
+            alert('Mohon isi luas lahan dengan benar');
+            return;
+        }
+        
+        // Convert to hectares
+        let areaInHectares = landArea;
+        if (landAreaUnit === 'm2') {
+            areaInHectares = landArea / 10000;
+        }
+        
+        // Dosis pupuk per hektar (kg/ha) berdasarkan jenis tanah dan fase pertumbuhan
+        let ureaHa = 0, sp36Ha = 0, kclHa = 0, organicHa = 0;
+        let applicationNote = "";
+        
+        if (plantingPhase === 'dasar') {
+            // Pemupukan dasar
+            ureaHa = soilType === 'rendah' ? 100 : (soilType === 'sedang' ? 75 : 50);
+            sp36Ha = soilType === 'rendah' ? 200 : (soilType === 'sedang' ? 150 : 100);
+            kclHa = soilType === 'rendah' ? 100 : (soilType === 'sedang' ? 75 : 50);
+            organicHa = 5000; // 5 ton/ha
+            applicationNote = "Pupuk dasar diberikan saat pengolahan tanah atau sebelum tanam. Benamkan pupuk organik saat pengolahan tanah dan pupuk kimia diberikan dalam alur di samping barisan tanaman.";
+        } else if (plantingPhase === 'vegetatif') {
+            // Fase vegetatif
+            ureaHa = soilType === 'rendah' ? 200 : (soilType === 'sedang' ? 150 : 100);
+            sp36Ha = soilType === 'rendah' ? 0 : 0;
+            kclHa = soilType === 'rendah' ? 50 : (soilType === 'sedang' ? 25 : 0);
+            organicHa = 0;
+            applicationNote = "Pemupukan fase vegetatif dilakukan saat tanaman berumur 15-30 HST. Aplikasikan dengan cara ditugal/dibenamkan di samping tanaman dengan jarak 5-7 cm dari pangkal batang.";
+        } else if (plantingPhase === 'generatif') {
+            // Fase generatif
+            ureaHa = soilType === 'rendah' ? 100 : (soilType === 'sedang' ? 75 : 50);
+            sp36Ha = 0;
+            kclHa = soilType === 'rendah' ? 50 : (soilType === 'sedang' ? 25 : 0);
+            organicHa = 0;
+            applicationNote = "Pemupukan fase generatif dilakukan saat tanaman berumur 45-60 HST. Aplikasikan dengan cara ditugal di samping tanaman dengan jarak 10-15 cm dari pangkal batang.";
+        }
+        
+        // Calculate for the given land area
+        const urea = ureaHa * areaInHectares;
+        const sp36 = sp36Ha * areaInHectares;
+        const kcl = kclHa * areaInHectares;
+        const organic = organicHa * areaInHectares;
+        
+        // Display results
+        document.getElementById('resultUrea').textContent = urea.toFixed(2) + " kg";
+        document.getElementById('resultUreaHa').textContent = ureaHa + " kg/ha";
+        document.getElementById('resultSP36').textContent = sp36.toFixed(2) + " kg";
+        document.getElementById('resultSP36Ha').textContent = sp36Ha + " kg/ha";
+        document.getElementById('resultKCl').textContent = kcl.toFixed(2) + " kg";
+        document.getElementById('resultKClHa').textContent = kclHa + " kg/ha";
+        document.getElementById('resultOrganic').textContent = organic.toFixed(2) + " kg";
+        document.getElementById('resultOrganicHa').textContent = organicHa + " kg/ha";
+        document.getElementById('fertilizerResultNote').textContent = applicationNote;
+        
+        // Show result card
+        document.getElementById('fertilizerResult').style.display = 'block';
+    }
+    
+    // Notification System Functions
+    function addNotification() {
+        const activityType = document.getElementById('activityType').value;
+        const notificationDate = document.getElementById('notificationDate').value;
+        const notes = document.getElementById('notificationNotes').value;
+        
+        if (!activityType || !notificationDate) {
+            alert('Pilih jenis kegiatan dan tanggal');
+            return;
+        }
+        
+        // Create notification object
+        const notification = {
+            id: Date.now(), // Unique ID based on timestamp
+            type: activityType,
+            date: notificationDate,
+            notes: notes,
+            created: new Date().toISOString()
+        };
+        
+        // Get existing notifications
+        let notifications = JSON.parse(localStorage.getItem('cornNotifications')) || [];
+        
+        // Add new notification
+        notifications.push(notification);
+        
+        // Save to localStorage
+        localStorage.setItem('cornNotifications', JSON.stringify(notifications));
+        
+        // Update display
+        loadNotifications();
+        
+        // Reset form
+        document.getElementById('notificationForm').reset();
+        
+        alert('Pengingat berhasil ditambahkan!');
+    }
+    
+    function loadNotifications() {
+        const container = document.getElementById('notificationsContainer');
+        const emptyMessage = document.getElementById('emptyNotification');
+        
+        // Get notifications from localStorage
+        let notifications = JSON.parse(localStorage.getItem('cornNotifications')) || [];
+        
+        // Sort by date (upcoming first)
+        notifications.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        // Clear container
+        container.innerHTML = '';
+        
+        if (notifications.length === 0) {
+            container.appendChild(emptyMessage);
+            return;
+        }
+        
+        // Activity type mapping
+        const activityNames = {
+            'pemupukan': 'Pemupukan',
+            'penyemprotan': 'Penyemprotan Pestisida',
+            'pengairan': 'Pengairan',
+            'penyiangan': 'Penyiangan Gulma',
+            'panen': 'Panen'
+        };
+        
+        // Activity icon mapping
+        const activityIcons = {
+            'pemupukan': 'fas fa-flask',
+            'penyemprotan': 'fas fa-spray-can',
+            'pengairan': 'fas fa-water',
+            'penyiangan': 'fas fa-seedling',
+            'panen': 'fas fa-leaf'
+        };
+        
+        // Add each notification to container
+        notifications.forEach(notif => {
+            const notifItem = document.createElement('div');
+            notifItem.className = 'notification-item';
+            
+            // Format date
+            const notifDate = new Date(notif.date);
+            const formattedDate = notifDate.toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Determine if notification is upcoming, today, or past
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const notifDateOnly = new Date(notif.date);
+            notifDateOnly.setHours(0, 0, 0, 0);
+            
+            let statusClass = '';
+            let statusBadge = '';
+            
+            if (notifDateOnly.getTime() === today.getTime()) {
+                statusClass = 'bg-warning text-dark';
+                statusBadge = '<span class="badge bg-warning text-dark">Hari Ini</span>';
+            } else if (notifDateOnly < today) {
+                statusClass = 'bg-secondary text-white';
+                statusBadge = '<span class="badge bg-secondary">Lewat</span>';
+            } else {
+                statusClass = 'bg-info text-dark';
+                statusBadge = '<span class="badge bg-info text-dark">Akan Datang</span>';
+            }
+            
+            // Build notification HTML
+            notifItem.innerHTML = `
+                <div class="notification-header">
+                    <span class="notification-title">
+                        <i class="${activityIcons[notif.type] || 'fas fa-calendar'} me-2"></i>
+                        ${activityNames[notif.type] || notif.type}
+                    </span>
+                    <span class="notification-date">${statusBadge}</span>
+                </div>
+                <div class="notification-message">
+                    <strong>Tanggal:</strong> ${formattedDate}<br>
+                    ${notif.notes ? `<strong>Catatan:</strong> ${notif.notes}` : ''}
+                </div>
+                <div class="notification-actions">
+                    <button class="btn btn-sm btn-outline-danger delete-notification" data-id="${notif.id}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            `;
+            
+            container.appendChild(notifItem);
+        });
+        
+        // Add delete event listeners
+        document.querySelectorAll('.delete-notification').forEach(btn => {
+            btn.addEventListener('click', function() {
+                deleteNotification(this.getAttribute('data-id'));
+            });
+        });
+    }
+    
+    function deleteNotification(id) {
+        if (confirm('Apakah Anda yakin ingin menghapus pengingat ini?')) {
+            // Get existing notifications
+            let notifications = JSON.parse(localStorage.getItem('cornNotifications')) || [];
+            
+            // Filter out the notification to delete
+            notifications = notifications.filter(n => n.id != id);
+            
+            // Save back to localStorage
+            localStorage.setItem('cornNotifications', JSON.stringify(notifications));
+            
+            // Update display
+            loadNotifications();
+        }
+    }
+</script>
+{% endblock %}

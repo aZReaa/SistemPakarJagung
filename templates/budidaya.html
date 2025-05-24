@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+
+{% block title %}Teknik Budidaya Jagung{% endblock %}
+
+{% block extra_css %}
+<style>
+    .budidaya-section {
+        margin-bottom: 3rem;
+    }
+    
+    .budidaya-section h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 0.5rem;
+    }
+    
+    .budidaya-section ul {
+        padding-left: 1.2rem;
+    }
+    
+    .budidaya-section li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-card {
+        background-color: #e8f4e3;
+        border-left: 5px solid var(--primary-color);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 5px;
+    }
+    
+    .phase-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0 text-center"><i class="fas fa-book me-2"></i>Panduan Budidaya Jagung</h2>
+    </div>
+    <div class="card-body p-4">
+        
+        <nav>
+            <div class="nav nav-tabs mb-4" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-persiapan-tab" data-bs-toggle="tab" data-bs-target="#nav-persiapan" type="button" role="tab" aria-controls="nav-persiapan" aria-selected="true">Persiapan Lahan</button>
+                <button class="nav-link" id="nav-penanaman-tab" data-bs-toggle="tab" data-bs-target="#nav-penanaman" type="button" role="tab" aria-controls="nav-penanaman" aria-selected="false">Penanaman</button>
+                <button class="nav-link" id="nav-pengairan-tab" data-bs-toggle="tab" data-bs-target="#nav-pengairan" type="button" role="tab" aria-controls="nav-pengairan" aria-selected="false">Pengairan</button>
+                <button class="nav-link" id="nav-panen-tab" data-bs-toggle="tab" data-bs-target="#nav-panen" type="button" role="tab" aria-controls="nav-panen" aria-selected="false">Panen</button>
+                <button class="nav-link" id="nav-pascapanen-tab" data-bs-toggle="tab" data-bs-target="#nav-pascapanen" type="button" role="tab" aria-controls="nav-pascapanen" aria-selected="false">Pasca Panen</button>
+            </div>
+        </nav>
+        
+        <div class="tab-content" id="nav-tabContent">
+            <!-- PERSIAPAN LAHAN -->
+            <div class="tab-pane fade show active" id="nav-persiapan" role="tabpanel" aria-labelledby="nav-persiapan-tab">
+                <div class="budidaya-section">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-tractor phase-icon"></i>
+                        <h3>Persiapan Lahan</h3>
+                    </div>
+                    
+                    <h4>Pengolahan Tanah</h4>
+                    <p>Pengolahan tanah bertujuan untuk menciptakan kondisi tanah yang gembur dan optimal untuk pertumbuhan akar jagung:</p>
+                    <ul>
+                        <li><strong>Pembajakan:</strong> Lakukan pembajakan sedalam 15-30 cm untuk membalik lapisan tanah dan memecah bongkahan.</li>
+                        <li><strong>Penggaruan:</strong> Haluskan bongkahan tanah dan ratakan permukaan tanah.</li>
+                        <li><strong>Pembuatan Bedengan:</strong> Untuk lahan dengan drainase buruk, buat bedengan setinggi 20-30 cm dengan lebar 3-4 meter.</li>
+                    </ul>
+                    
+                    <h4>Kondisi Tanah Ideal</h4>
+                    <ul>
+                        <li><strong>pH Tanah:</strong> 5,6-7,5 (optimum 6,2-6,8)</li>
+                        <li><strong>Tekstur Tanah:</strong> Lempung berpasir hingga lempung liat berdebu</li>
+                        <li><strong>Drainase:</strong> Baik, tidak tergenang</li>
+                        <li><strong>Kedalaman Efektif:</strong> Minimal 60 cm</li>
+                        <li><strong>Kandungan Bahan Organik:</strong> Minimal 3%</li>
+                    </ul>
+                    
+                    <div class="info-card">
+                        <h5><i class="fas fa-info-circle me-2"></i>Pengapuran</h5>
+                        <p>Jika pH tanah di bawah 5,5, lakukan pengapuran 1-2 ton/ha menggunakan kapur pertanian (dolomit atau kalsit) sekitar 2-3 minggu sebelum tanam. Pengapuran bertujuan untuk menaikan pH dan menetralisir senyawa beracun.</p>
+                    </div>
+                    
+                    <h4>Pupuk Dasar</h4>
+                    <p>Berikan pupuk dasar berupa:</p>
+                    <ul>
+                        <li>Pupuk organik (kompos/pupuk kandang) sebanyak 5-10 ton/ha</li>
+                        <li>Pupuk NPK sesuai rekomendasi berdasarkan analisis tanah atau mengikuti panduan pemupukan standar untuk jagung</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PENANAMAN -->
+            <div class="tab-pane fade" id="nav-penanaman" role="tabpanel" aria-labelledby="nav-penanaman-tab">
+                <div class="budidaya-section">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-seedling phase-icon"></i>
+                        <h3>Penanaman</h3>
+                    </div>
+                    
+                    <h4>Waktu Tanam</h4>
+                    <ul>
+                        <li><strong>Musim Hujan:</strong> Awal musim hujan (Oktober-November)</li>
+                        <li><strong>Musim Kemarau:</strong> Awal musim kemarau (Maret-April) dengan irigasi yang cukup</li>
+                        <li>Hindari masa puncak hujan (Desember-Januari) untuk menghindari banjir dan intensitas penyakit tinggi</li>
+                    </ul>
+                    
+                    <h4>Pola Tanam</h4>
+                    <ul>
+                        <li><strong>Jarak Tanam:</strong>
+                            <ul>
+                                <li>Monokultur: 75 cm x 20 cm (1 tanaman/lubang) atau 75 cm x 40 cm (2 tanaman/lubang)</li>
+                                <li>Tumpangsari: 100-150 cm x 25-40 cm</li>
+                            </ul>
+                        </li>
+                        <li><strong>Kebutuhan Benih:</strong> 20-25 kg/ha untuk varietas hibrida</li>
+                        <li><strong>Kedalaman Tanam:</strong> 3-5 cm</li>
+                    </ul>
+                    
+                    <h4>Cara Tanam</h4>
+                    <ol>
+                        <li>Buat lubang tanam dengan tugal pada kedalaman 3-5 cm</li>
+                        <li>Masukkan 1-2 benih per lubang (tergantung jarak tanam)</li>
+                        <li>Tutup dengan tanah gembur, jangan terlalu padat</li>
+                        <li>Untuk hasil optimal, lakukan perlakuan benih dengan fungisida sebelum tanam</li>
+                    </ol>
+                    
+                    <div class="info-card">
+                        <h5><i class="fas fa-info-circle me-2"></i>Perlakuan Benih</h5>
+                        <p>Untuk menghindari serangan penyakit awal, sebaiknya lakukan seed treatment dengan fungisida berbahan aktif metalaksil atau mankozeb. Ini sangat penting terutama untuk mencegah penyakit bulai.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PENGAIRAN -->
+            <div class="tab-pane fade" id="nav-pengairan" role="tabpanel" aria-labelledby="nav-pengairan-tab">
+                <div class="budidaya-section">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-water phase-icon"></i>
+                        <h3>Pengairan</h3>
+                    </div>
+                    
+                    <h4>Kebutuhan Air per Fase</h4>
+                    <ul>
+                        <li><strong>Fase Perkecambahan (0-14 HST):</strong> 50-60 mm air, kelembaban tanah 90%</li>
+                        <li><strong>Fase Vegetatif (15-45 HST):</strong> 200-250 mm air, kelembaban tanah 80%</li>
+                        <li><strong>Fase Pembungaan (46-65 HST):</strong> 150-180 mm air, kelembaban tanah 85% (fase kritis)</li>
+                        <li><strong>Fase Pengisian Biji (66-90 HST):</strong> 100-120 mm air, kelembaban tanah 70-80%</li>
+                        <li><strong>Fase Pemasakan (90-110 HST):</strong> 50-70 mm air, kelembaban tanah 60-70%</li>
+                    </ul>
+                    
+                    <div class="info-card">
+                        <h5><i class="fas fa-info-circle me-2"></i>Fase Kritis Air</h5>
+                        <p>Jagung sangat sensitif terhadap kekurangan air pada fase pembungaan dan pengisian biji (45-75 HST). Kekurangan air pada fase ini dapat menurunkan hasil hingga 40-60%.</p>
+                    </div>
+                    
+                    <h4>Teknik Irigasi</h4>
+                    <ol>
+                        <li><strong>Irigasi Alur:</strong> Metode paling umum dan sederhana. Air dialirkan melalui alur di antara barisan tanaman.</li>
+                        <li><strong>Irigasi Curah (Sprinkler):</strong> Efektif untuk lahan luas dengan topografi bergelombang.</li>
+                        <li><strong>Irigasi Tetes:</strong> Paling efisien untuk penggunaan air, cocok untuk daerah dengan ketersediaan air terbatas.</li>
+                        <li><strong>Irigasi Genangan Terputus:</strong> Air digenangkan selama periode tertentu, kemudian dikeringkan.</li>
+                    </ol>
+                    
+                    <h4>Tanda Tanaman Kekurangan Air</h4>
+                    <ul>
+                        <li>Daun menggulung dan mengeriting</li>
+                        <li>Warna daun menguning dimulai dari bagian bawah</li>
+                        <li>Tanaman kerdil dan pertumbuhan terhambat</li>
+                        <li>Penyerbukan tidak sempurna dan tongkol tidak terisi penuh</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PANEN -->
+            <div class="tab-pane fade" id="nav-panen" role="tabpanel" aria-labelledby="nav-panen-tab">
+                <div class="budidaya-section">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-leaf phase-icon"></i>
+                        <h3>Panen</h3>
+                    </div>
+                    
+                    <h4>Tanda-tanda Jagung Siap Panen</h4>
+                    <ul>
+                        <li><strong>Umur Tanaman:</strong> 95-110 hari setelah tanam (tergantung varietas)</li>
+                        <li><strong>Kondisi Fisik:</strong>
+                            <ul>
+                                <li>Daun dan kelobot sudah menguning dan mengering</li>
+                                <li>Rambut jagung (silk) berwarna cokelat kehitaman dan kering</li>
+                                <li>Biji keras dan mengkilap</li>
+                                <li>Jika ditekan dengan kuku tidak meninggalkan bekas</li>
+                                <li>Jika dipatahkan, pada bagian tengah biji terdapat lapisan hitam (black layer)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Kadar Air:</strong> Untuk konsumsi segar 30-35%, untuk jagung pipil kering 20-25%</li>
+                    </ul>
+                    
+                    <div class="info-card">
+                        <h5><i class="fas fa-info-circle me-2"></i>Uji Kematangan</h5>
+                        <p>Cara sederhana menguji kematangan jagung adalah dengan menekan bijinya dengan kuku. Jika tidak ada bekas dan terasa keras, jagung sudah siap panen.</p>
+                    </div>
+                    
+                    <h4>Cara Panen</h4>
+                    <ol>
+                        <li>Petik tongkol dengan cara mematahkan atau memutar tongkol ke bawah</li>
+                        <li>Untuk memudahkan, potong pangkal tongkol dengan pisau atau gunting</li>
+                        <li>Pisahkan tongkol berdasarkan kualitas (besar, utuh, sehat)</li>
+                        <li>Hindari merusak tongkol saat panen untuk mencegah serangan jamur</li>
+                    </ol>
+                    
+                    <h4>Waktu Panen</h4>
+                    <ul>
+                        <li>Lakukan panen pada pagi atau sore hari saat suhu tidak terlalu tinggi</li>
+                        <li>Hindari panen saat hujan untuk mencegah peningkatan kadar air dan serangan jamur</li>
+                        <li>Jika untuk jagung pipil, tunggu hingga kadar air mencapai 20-25%</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PASCA PANEN -->
+            <div class="tab-pane fade" id="nav-pascapanen" role="tabpanel" aria-labelledby="nav-pascapanen-tab">
+                <div class="budidaya-section">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-warehouse phase-icon"></i>
+                        <h3>Pasca Panen</h3>
+                    </div>
+                    
+                    <h4>Penanganan Hasil Panen</h4>
+                    <h5>1. Jagung Segar (untuk konsumsi langsung)</h5>
+                    <ul>
+                        <li>Sortasi tongkol berdasarkan ukuran dan kualitas</li>
+                        <li>Simpan dalam kondisi dingin (10-15°C) dengan kelembaban 85-90%</li>
+                        <li>Jagung manis segar dapat bertahan 5-8 hari dalam suhu rendah</li>
+                    </ul>
+                    
+                    <h5>2. Jagung Pipil Kering</h5>
+                    <ol>
+                        <li><strong>Pengeringan:</strong>
+                            <ul>
+                                <li>Keringkan tongkol hingga kadar air 14-15% (untuk penyimpanan jangka panjang)</li>
+                                <li>Pengeringan dapat dilakukan dengan penjemuran langsung (2-5 hari) atau menggunakan mesin pengering (dryer)</li>
+                                <li>Jemur di atas lantai jemur atau terpal, aduk secara berkala untuk keseragaman</li>
+                            </ul>
+                        </li>
+                        <li><strong>Pemipilan:</strong>
+                            <ul>
+                                <li>Lakukan pemipilan setelah kadar air mencapai 17-18%</li>
+                                <li>Gunakan alat pemipil manual atau mekanis</li>
+                                <li>Pilah dan buang biji yang rusak atau terserang hama</li>
+                            </ul>
+                        </li>
+                        <li><strong>Pembersihan:</strong>
+                            <ul>
+                                <li>Bersihkan dari kotoran, sisa tongkol, biji rusak</li>
+                                <li>Gunakan tampi atau hembusan angin untuk memisahkan kotoran</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <h4>Penyimpanan</h4>
+                    <ul>
+                        <li><strong>Syarat Penyimpanan yang Baik:</strong>
+                            <ul>
+                                <li>Kadar air biji 12-14%</li>
+                                <li>Tempat penyimpanan bersih dan kering</li>
+                                <li>Bebas dari hama gudang</li>
+                                <li>Sirkulasi udara baik</li>
+                                <li>Tidak terkena sinar matahari langsung</li>
+                            </ul>
+                        </li>
+                        <li><strong>Metode Penyimpanan:</strong>
+                            <ul>
+                                <li>Gunakan karung bersih (karung goni atau plastik berlubang)</li>
+                                <li>Letakkan karung di atas palet kayu (jangan langsung di lantai)</li>
+                                <li>Tumpuk maksimal 8-10 karung untuk menghindari kerusakan fisik</li>
+                                <li>Untuk skala besar, gunakan silo atau gudang dengan ventilasi baik</li>
+                            </ul>
+                        </li>
+                        <li><strong>Pengendalian Hama Gudang:</strong>
+                            <ul>
+                                <li>Gunakan fumigan seperti fosfin atau karbon dioksida untuk volume besar</li>
+                                <li>Gunakan wadah kedap udara untuk skala kecil</li>
+                                <li>Periksa secara berkala setiap 2-4 minggu</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <div class="info-card">
+                        <h5><i class="fas fa-info-circle me-2"></i>Kemasan yang Baik</h5>
+                        <p>Untuk penyimpanan jangka panjang, menggunakan kemasan hermetik (kedap udara) seperti PICS bag (Purdue Improved Crop Storage) yang dapat menjaga kualitas jagung hingga 6-12 bulan tanpa penggunaan bahan kimia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Menu
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const triggerTabList = [].slice.call(document.querySelectorAll('#nav-tab button'));
+        triggerTabList.forEach(function(triggerEl) {
+            const tabTrigger = new bootstrap.Tab(triggerEl);
+            
+            triggerEl.addEventListener('click', function(event) {
+                event.preventDefault();
+                tabTrigger.show();
+            });
+        });
+    });
+</script>
+{% endblock %}

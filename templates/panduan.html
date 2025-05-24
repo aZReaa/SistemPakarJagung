@@ -1,0 +1,559 @@
+{% extends "base.html" %}
+
+{% block title %}Panduan Penggunaan - Sistem Pakar Jagung{% endblock %}
+
+{% block extra_css %}
+<style>
+    .guide-section {
+        margin-bottom: 2.5rem;
+    }
+    
+    .guide-section h3 {
+        color: var(--primary-color);
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .accordion-button:not(.collapsed) {
+        background-color: #e8f4e3;
+        color: var(--primary-color);
+    }
+    
+    .accordion-button:focus {
+        box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
+    }
+    
+    .feature-card {
+        border-radius: 0.8rem;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        height: 100%;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    
+    .feature-title {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .nav-pills .nav-link.active {
+        background-color: var(--primary-color);
+    }
+    
+    .nav-pills .nav-link {
+        color: #333;
+    }
+    
+    .step-card {
+        position: relative;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        border-left: 5px solid var(--primary-color);
+    }
+    
+    .step-number {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 30px;
+        height: 30px;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+    
+    .info-box {
+        background-color: #e8f4e3;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 5px solid var(--primary-color);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0 text-center"><i class="fas fa-book-reader me-2"></i>Panduan Penggunaan SiPakJag</h2>
+    </div>
+    <div class="card-body p-4">
+        <ul class="nav nav-pills mb-4" id="guideTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">Ikhtisar</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pemupukan-tab" data-bs-toggle="pill" data-bs-target="#pemupukan" type="button" role="tab" aria-controls="pemupukan" aria-selected="false">Pemupukan</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="diagnosis-tab" data-bs-toggle="pill" data-bs-target="#diagnosis" type="button" role="tab" aria-controls="diagnosis" aria-selected="false">Diagnosis</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="budidaya-tab" data-bs-toggle="pill" data-bs-target="#budidaya" type="button" role="tab" aria-controls="budidaya" aria-selected="false">Budidaya</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="kalkulator-tab" data-bs-toggle="pill" data-bs-target="#kalkulator" type="button" role="tab" aria-controls="kalkulator" aria-selected="false">Kalkulator</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="faq-tab" data-bs-toggle="pill" data-bs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="false">FAQ</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="guideTabContent">
+            <!-- IKHTISAR -->
+            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                <div class="guide-section">
+                    <h3>Tentang SiPakJag</h3>
+                    <p>SiPakJag (Sistem Pakar Jagung) adalah aplikasi yang dirancang untuk membantu petani jagung dalam mengelola tanaman mereka dengan lebih baik. Aplikasi ini menggunakan pendekatan sistem pakar untuk memberikan rekomendasi pemupukan, diagnosis penyakit, informasi budidaya, dan alat kalkulasi yang berguna.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card feature-card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-flask feature-icon"></i>
+                                    <h5 class="feature-title">Rekomendasi Pemupukan</h5>
+                                    <p>Dapatkan rekomendasi dosis dan jadwal pemupukan berdasarkan umur tanaman, gejala, dan jenis tanah.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card feature-card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-stethoscope feature-icon"></i>
+                                    <h5 class="feature-title">Diagnosis Penyakit</h5>
+                                    <p>Identifikasi penyakit dan hama berdasarkan gejala yang terlihat pada tanaman jagung Anda.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card feature-card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-book feature-icon"></i>
+                                    <h5 class="feature-title">Panduan Budidaya</h5>
+                                    <p>Informasi lengkap tentang teknik budidaya jagung dari persiapan lahan hingga pasca panen.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card feature-card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-calculator feature-icon"></i>
+                                    <h5 class="feature-title">Kalkulator & Pengingat</h5>
+                                    <p>Hitung kebutuhan benih dan pupuk serta atur pengingat untuk kegiatan budidaya.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box mt-4">
+                        <h5><i class="fas fa-info-circle me-2"></i>Perhatian</h5>
+                        <p>SiPakJag dirancang sebagai alat bantu, bukan pengganti saran dari Penyuluh Pertanian Lapangan (PPL) atau ahli pertanian. Untuk hasil terbaik, gunakan informasi dari aplikasi ini bersamaan dengan konsultasi dengan penyuluh lokal.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PEMUPUKAN -->
+            <div class="tab-pane fade" id="pemupukan" role="tabpanel" aria-labelledby="pemupukan-tab">
+                <div class="guide-section">
+                    <h3>Panduan Penggunaan Fitur Rekomendasi Pemupukan</h3>
+                    <p>Fitur ini membantu Anda mendapatkan rekomendasi dosis dan jenis pupuk yang tepat berdasarkan umur tanaman, gejala yang terlihat, dan jenis tanah.</p>
+                    
+                    <h5 class="mt-4 mb-3">Cara Menggunakan Fitur Rekomendasi Pemupukan:</h5>
+                    
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5>Input Umur Tanaman</h5>
+                        <p>Masukkan umur tanaman jagung dalam Hari Setelah Tanam (HST). Hal ini penting karena kebutuhan nutrisi tanaman jagung berbeda pada setiap fase pertumbuhan.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5>Pilih Gejala Tanaman</h5>
+                        <p>Pilih gejala yang terlihat pada tanaman jagung Anda. Gejala ini akan membantu sistem menganalisis kemungkinan kekurangan atau kelebihan nutrisi tertentu.</p>
+                        <ul>
+                            <li><strong>Normal:</strong> Tanaman terlihat sehat tanpa gejala defisiensi nutrisi.</li>
+                            <li><strong>Daun Menguning:</strong> Menunjukkan kemungkinan kekurangan Nitrogen (N).</li>
+                            <li><strong>Daun Ungu:</strong> Menunjukkan kemungkinan kekurangan Fosfor (P).</li>
+                            <li><strong>Pinggir Daun Kecoklatan:</strong> Menunjukkan kemungkinan kekurangan Kalium (K).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5>Pilih Jenis Tanah</h5>
+                        <p>Pilih jenis tanah di lahan Anda. Jenis tanah memengaruhi ketersediaan nutrisi dan efisiensi pemupukan.</p>
+                        <ul>
+                            <li><strong>Tanah Miskin Hara:</strong> Tanah dengan kandungan nutrisi rendah, biasanya berpasir atau yang telah terdegradasi.</li>
+                            <li><strong>Tanah Sedang:</strong> Tanah dengan kandungan nutrisi sedang, umum di sebagian besar lahan pertanian.</li>
+                            <li><strong>Tanah Subur:</strong> Tanah dengan kandungan nutrisi tinggi, biasanya tanah yang kaya bahan organik.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h5>Dapatkan Rekomendasi</h5>
+                        <p>Setelah mengisi semua data, klik tombol "Dapatkan Rekomendasi" untuk melihat hasil rekomendasi pemupukan yang sesuai.</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h5><i class="fas fa-info-circle me-2"></i>Catatan Penting</h5>
+                        <p>Rekomendasi pemupukan yang diberikan adalah dalam satuan kg/ha (kilogram per hektar). Untuk mengkonversi ke lahan Anda, gunakan kalkulator kebutuhan pupuk di bagian "Kalkulator".</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DIAGNOSIS -->
+            <div class="tab-pane fade" id="diagnosis" role="tabpanel" aria-labelledby="diagnosis-tab">
+                <div class="guide-section">
+                    <h3>Panduan Penggunaan Fitur Diagnosis Penyakit</h3>
+                    <p>Fitur ini membantu Anda mengidentifikasi penyakit atau hama yang mungkin menyerang tanaman jagung Anda berdasarkan gejala yang terlihat.</p>
+                    
+                    <h5 class="mt-4 mb-3">Cara Menggunakan Fitur Diagnosis Penyakit:</h5>
+                    
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5>Amati Tanaman Jagung</h5>
+                        <p>Perhatikan dan catat gejala-gejala yang terlihat pada tanaman jagung Anda. Perhatikan bagian tanaman yang terpengaruh (daun, batang, akar, atau tongkol) dan karakteristik gejala (warna, bentuk, pola, dll).</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5>Pilih Gejala yang Terlihat</h5>
+                        <p>Pada halaman diagnosis, centang semua gejala yang sesuai dengan kondisi tanaman jagung Anda. Pilih sebanyak mungkin gejala yang relevan untuk hasil diagnosis yang lebih akurat.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5>Proses Diagnosis</h5>
+                        <p>Klik tombol "Proses Diagnosis" untuk menjalankan analisis. Sistem akan membandingkan gejala yang Anda pilih dengan database penyakit dan hama jagung.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h5>Analisis Hasil Diagnosis</h5>
+                        <p>Hasil diagnosis akan menampilkan:</p>
+                        <ul>
+                            <li><strong>Nama Penyakit/Hama:</strong> Identifikasi penyakit atau hama yang paling mungkin.</li>
+                            <li><strong>Tingkat Kecocokan:</strong> Persentase kecocokan antara gejala yang Anda pilih dengan gejala penyakit/hama dalam database.</li>
+                            <li><strong>Gejala yang Cocok:</strong> Daftar gejala yang cocok dengan penyakit/hama yang teridentifikasi.</li>
+                            <li><strong>Saran Penanganan:</strong> Rekomendasi cara mengatasi penyakit/hama tersebut.</li>
+                            <li><strong>Kemungkinan Alternatif:</strong> Penyakit/hama lain yang mungkin, jika ada kecocokan yang signifikan.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h5><i class="fas fa-info-circle me-2"></i>Catatan Penting</h5>
+                        <p>Hasil diagnosis dari sistem ini bersifat indikatif dan tidak menggantikan diagnosis langsung dari ahli. Jika penyakit/hama tidak dapat diidentifikasi dengan jelas atau serangan sangat parah, konsultasikan dengan Penyuluh Pertanian Lapangan (PPL) setempat.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BUDIDAYA -->
+            <div class="tab-pane fade" id="budidaya" role="tabpanel" aria-labelledby="budidaya-tab">
+                <div class="guide-section">
+                    <h3>Panduan Penggunaan Fitur Informasi Budidaya</h3>
+                    <p>Fitur ini menyediakan informasi komprehensif tentang teknik budidaya jagung, mulai dari persiapan lahan hingga penanganan pasca panen.</p>
+                    
+                    <h5 class="mt-4 mb-3">Cara Menggunakan Fitur Informasi Budidaya:</h5>
+                    
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5>Akses Halaman Budidaya</h5>
+                        <p>Klik menu "Budidaya" pada navigasi utama aplikasi untuk mengakses informasi budidaya jagung.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5>Pilih Fase Budidaya</h5>
+                        <p>Informasi budidaya dibagi menjadi beberapa tab berdasarkan fase budidaya:</p>
+                        <ul>
+                            <li><strong>Persiapan Lahan:</strong> Informasi tentang pengolahan tanah, kondisi tanah ideal, dan persiapan sebelum tanam.</li>
+                            <li><strong>Penanaman:</strong> Panduan waktu tanam, jarak tanam, teknik penanaman, dan pemilihan benih.</li>
+                            <li><strong>Pengairan:</strong> Informasi kebutuhan air pada setiap fase pertumbuhan jagung dan teknik irigasi.</li>
+                            <li><strong>Panen:</strong> Panduan waktu panen yang tepat, tanda-tanda jagung siap panen, dan teknik pemanenan.</li>
+                            <li><strong>Pasca Panen:</strong> Informasi penanganan hasil panen, pengeringan, penyimpanan, dan pencegahan kerusakan.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5>Pelajari Informasi Terperinci</h5>
+                        <p>Setiap tab berisi informasi terperinci tentang fase budidaya tersebut, termasuk tips praktis, data teknis, dan praktik terbaik yang direkomendasikan.</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h5><i class="fas fa-info-circle me-2"></i>Catatan Penting</h5>
+                        <p>Informasi budidaya yang disediakan bersifat umum dan mungkin perlu disesuaikan dengan kondisi lokal, varietas jagung yang ditanam, dan praktik pertanian setempat. Konsultasikan dengan penyuluh pertanian untuk penyesuaian yang diperlukan.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- KALKULATOR -->
+            <div class="tab-pane fade" id="kalkulator" role="tabpanel" aria-labelledby="kalkulator-tab">
+                <div class="guide-section">
+                    <h3>Panduan Penggunaan Fitur Kalkulator</h3>
+                    <p>Fitur ini menyediakan alat untuk menghitung kebutuhan benih dan pupuk berdasarkan luas lahan serta sistem pengingat untuk kegiatan budidaya.</p>
+                    
+                    <h5 class="mt-4 mb-3">Kalkulator Kebutuhan Benih:</h5>
+                    
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5>Input Data</h5>
+                        <p>Masukkan informasi yang diperlukan:</p>
+                        <ul>
+                            <li><strong>Luas Lahan:</strong> Masukkan luas lahan dalam meter persegi (m²) atau hektar (ha).</li>
+                            <li><strong>Jarak Antar Baris:</strong> Jarak antara baris tanaman dalam sentimeter (cm).</li>
+                            <li><strong>Jarak Antar Tanaman:</strong> Jarak antara tanaman dalam satu baris dalam sentimeter (cm).</li>
+                            <li><strong>Jumlah Benih per Lubang:</strong> Berapa banyak benih yang ditanam dalam satu lubang tanam.</li>
+                            <li><strong>Berat Rata-rata Benih:</strong> Berat per biji jagung dalam gram (g).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5>Hitung Kebutuhan Benih</h5>
+                        <p>Klik tombol "Hitung Kebutuhan Benih" untuk mendapatkan hasil perhitungan.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5>Analisis Hasil</h5>
+                        <p>Hasil perhitungan akan menampilkan:</p>
+                        <ul>
+                            <li>Jumlah lubang tanam yang diperlukan</li>
+                            <li>Jumlah total benih yang dibutuhkan</li>
+                            <li>Berat total benih dalam kilogram (kg)</li>
+                        </ul>
+                    </div>
+                    
+                    <h5 class="mt-4 mb-3">Kalkulator Kebutuhan Pupuk:</h5>
+                    
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5>Input Data</h5>
+                        <p>Masukkan informasi yang diperlukan:</p>
+                        <ul>
+                            <li><strong>Luas Lahan:</strong> Masukkan luas lahan dalam meter persegi (m²) atau hektar (ha).</li>
+                            <li><strong>Jenis Tanah:</strong> Pilih jenis tanah (miskin hara, sedang, atau subur).</li>
+                            <li><strong>Fase Pertumbuhan:</strong> Pilih fase pertumbuhan tanaman (pemupukan dasar, vegetatif, atau generatif).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5>Hitung Kebutuhan Pupuk</h5>
+                        <p>Klik tombol "Hitung Kebutuhan Pupuk" untuk mendapatkan hasil perhitungan.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5>Analisis Hasil</h5>
+                        <p>Hasil perhitungan akan menampilkan kebutuhan untuk:</p>
+                        <ul>
+                            <li>Pupuk Urea (kg)</li>
+                            <li>Pupuk SP-36 (kg)</li>
+                            <li>Pupuk KCl (kg)</li>
+                            <li>Pupuk Organik (kg)</li>
+                        </ul>
+                        <p>Disertai dengan rekomendasi cara aplikasi pupuk.</p>
+                    </div>
+                    
+                    <h5 class="mt-4 mb-3">Sistem Pengingat Kegiatan:</h5>
+                    
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5>Tambah Pengingat</h5>
+                        <p>Untuk menambahkan pengingat kegiatan budidaya:</p>
+                        <ul>
+                            <li>Pilih jenis kegiatan (pemupukan, penyemprotan, pengairan, penyiangan, panen)</li>
+                            <li>Tentukan tanggal kegiatan</li>
+                            <li>Tambahkan catatan jika diperlukan</li>
+                            <li>Klik "Tambah Pengingat"</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5>Kelola Pengingat</h5>
+                        <p>Pengingat yang sudah ditambahkan akan ditampilkan dalam daftar. Anda dapat:</p>
+                        <ul>
+                            <li>Melihat semua pengingat yang telah dibuat</li>
+                            <li>Menghapus pengingat yang tidak diperlukan lagi</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h5><i class="fas fa-info-circle me-2"></i>Catatan Penting</h5>
+                        <p>Pengingat disimpan di perangkat Anda menggunakan local storage browser. Pengingat tidak akan hilang saat menutup browser, tetapi akan hilang jika Anda menghapus data browser atau menggunakan perangkat yang berbeda.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+                <div class="guide-section">
+                    <h3>Pertanyaan yang Sering Diajukan (FAQ)</h3>
+                    
+                    <div class="accordion mt-4" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqAnswer1" aria-expanded="true" aria-controls="faqAnswer1">
+                                    Bagaimana jika umur jagung saya tidak ada dalam jadwal pemupukan?
+                                </button>
+                            </h2>
+                            <div id="faqAnswer1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Jika umur jagung Anda tidak ada dalam jadwal pemupukan standar, sistem akan memberitahu Anda bahwa tidak ada rekomendasi standar untuk umur tersebut. Dalam kasus ini:</p>
+                                    <ul>
+                                        <li>Pilih umur jagung yang paling mendekati dengan fase pertumbuhan yang sama (vegetatif awal, vegetatif akhir, generatif awal, dll).</li>
+                                        <li>Konsultasikan dengan Penyuluh Pertanian Lapangan (PPL) setempat untuk rekomendasi yang lebih spesifik.</li>
+                                        <li>Gunakan panduan umum pemupukan jagung berdasarkan fase pertumbuhan yang tersedia di bagian "Budidaya".</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqAnswer2" aria-expanded="false" aria-controls="faqAnswer2">
+                                    Apa yang harus dilakukan jika hasil diagnosis menunjukkan beberapa kemungkinan penyakit?
+                                </button>
+                            </h2>
+                            <div id="faqAnswer2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Ketika hasil diagnosis menunjukkan beberapa kemungkinan penyakit (alternatif):</p>
+                                    <ul>
+                                        <li>Perhatikan persentase kecocokan untuk setiap kemungkinan penyakit. Penyakit dengan persentase kecocokan tertinggi biasanya yang paling mungkin.</li>
+                                        <li>Bandingkan gejala yang cocok untuk setiap penyakit dengan apa yang Anda amati di lapangan.</li>
+                                        <li>Jika ada keraguan, lakukan tindakan pengendalian yang mencakup semua kemungkinan penyakit atau konsultasikan dengan ahli.</li>
+                                        <li>Dalam beberapa kasus, tanaman jagung bisa terserang lebih dari satu penyakit secara bersamaan.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqAnswer3" aria-expanded="false" aria-controls="faqAnswer3">
+                                    Seberapa akurat rekomendasi aplikasi ini?
+                                </button>
+                            </h2>
+                            <div id="faqAnswer3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Tingkat akurasi rekomendasi dari aplikasi ini bergantung pada beberapa faktor:</p>
+                                    <ul>
+                                        <li><strong>Rekomendasi Pemupukan:</strong> Rekomendasi pemupukan berdasarkan pada standar pemupukan jagung yang umum digunakan, tetapi perlu disesuaikan dengan kondisi spesifik lokasi seperti hasil analisis tanah, varietas jagung, dan kondisi lingkungan.</li>
+                                        <li><strong>Diagnosis Penyakit:</strong> Akurasi diagnosis bergantung pada ketepatan identifikasi gejala oleh pengguna. Semakin banyak dan tepat gejala yang dipilih, semakin akurat diagnosisnya.</li>
+                                        <li><strong>Kalkulator:</strong> Perhitungan dari kalkulator benih dan pupuk cukup akurat secara matematis, tetapi perlu mempertimbangkan faktor-faktor praktis seperti efisiensi aplikasi dan kehilangan.</li>
+                                    </ul>
+                                    <p>Aplikasi ini dirancang sebagai alat bantu, bukan pengganti saran dari ahli. Untuk hasil terbaik, gunakan aplikasi ini bersama dengan konsultasi dengan penyuluh pertanian setempat.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqAnswer4" aria-expanded="false" aria-controls="faqAnswer4">
+                                    Bagaimana cara menyimpan atau mengekspor hasil diagnosis atau rekomendasi?
+                                </button>
+                            </h2>
+                            <div id="faqAnswer4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Saat ini, aplikasi tidak memiliki fitur ekspor langsung, tetapi Anda dapat menyimpan hasil dengan cara berikut:</p>
+                                    <ul>
+                                        <li><strong>Screenshot:</strong> Ambil tangkapan layar dari hasil diagnosis atau rekomendasi.</li>
+                                        <li><strong>Cetak Halaman:</strong> Gunakan fungsi cetak browser (Ctrl+P atau Cmd+P) untuk mencetak atau menyimpan hasil sebagai PDF.</li>
+                                        <li><strong>Catat Manual:</strong> Salin informasi penting ke catatan Anda sendiri.</li>
+                                    </ul>
+                                    <p>Kami sedang mempertimbangkan untuk menambahkan fitur ekspor langsung dan penyimpanan riwayat konsultasi dalam pembaruan mendatang.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqAnswer5" aria-expanded="false" aria-controls="faqAnswer5">
+                                    Apakah pengingat akan tetap ada jika saya menutup browser?
+                                </button>
+                            </h2>
+                            <div id="faqAnswer5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Ya, pengingat kegiatan budidaya yang Anda tambahkan akan tetap tersimpan meskipun Anda menutup browser atau mematikan komputer. Ini karena data disimpan di local storage browser Anda.</p>
+                                    <p>Namun, perhatikan bahwa:</p>
+                                    <ul>
+                                        <li>Jika Anda menghapus data browsing atau cookies, pengingat mungkin akan hilang.</li>
+                                        <li>Pengingat hanya tersimpan di perangkat yang sama. Jika Anda mengakses aplikasi dari perangkat lain, pengingat tidak akan muncul.</li>
+                                        <li>Jika Anda menggunakan mode penjelajahan pribadi/incognito, pengingat hanya akan tersimpan selama sesi browser tersebut.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqAnswer6" aria-expanded="false" aria-controls="faqAnswer6">
+                                    Bagaimana cara mendapatkan gambar gejala penyakit untuk referensi?
+                                </button>
+                            </h2>
+                            <div id="faqAnswer6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Saat ini, aplikasi menyediakan placeholder untuk gambar gejala penyakit. Untuk mendapatkan referensi visual yang lebih lengkap, Anda dapat:</p>
+                                    <ul>
+                                        <li>Berkonsultasi dengan Penyuluh Pertanian Lapangan (PPL) yang biasanya memiliki katalog gejala penyakit.</li>
+                                        <li>Mengunjungi situs web Balai Penelitian Tanaman Serealia (Balitsereal) atau Balai Penelitian Pertanian lainnya.</li>
+                                        <li>Mencari di mesin pencari dengan kata kunci spesifik nama penyakit jagung yang teridentifikasi.</li>
+                                        <li>Mengakses publikasi dari perguruan tinggi pertanian atau kementerian pertanian.</li>
+                                    </ul>
+                                    <p>Kami berencana untuk menambahkan database gambar gejala penyakit dalam pembaruan mendatang.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Menu
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tab activation
+        const triggerTabList = [].slice.call(document.querySelectorAll('#guideTab button'));
+        triggerTabList.forEach(function(triggerEl) {
+            const tabTrigger = new bootstrap.Tab(triggerEl);
+            
+            triggerEl.addEventListener('click', function(event) {
+                event.preventDefault();
+                tabTrigger.show();
+            });
+        });
+    });
+</script>
+{% endblock %}

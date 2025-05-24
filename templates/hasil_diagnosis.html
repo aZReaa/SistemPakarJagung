@@ -1,0 +1,300 @@
+<!-- filepath: c:\laragon\www\jagung\templates\hasil_diagnosis.html -->
+{% extends "base.html" %}
+
+{% block title %}Hasil Diagnosis Penyakit Jagung{% endblock %}
+
+{% block extra_css %}
+<style>
+    .disease-card {
+        border-left: 5px solid #388e3c;
+        margin-bottom: 20px;
+    }
+
+    .alternative-card {
+        border-left: 5px solid #ffc107;
+        margin-bottom: 10px;
+    }
+
+    .match-rate {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        margin-left: 10px;
+        background-color: #388e3c;
+        color: white;
+    }
+
+    .solution-section {
+        background-color: #e8f4e3;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .disease-code {
+        background-color: #e9ecef;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        margin-left: 8px;
+    }
+    
+    .symptom-card {
+        transition: transform 0.3s;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .symptom-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .symptom-image {
+        height: 150px;
+        background-color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .symptom-image img {
+        max-height: 150px;
+        max-width: 100%;
+        object-fit: contain;
+    }
+    
+    .symptom-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    
+    .symptom-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0 text-center"><i class="fas fa-clipboard-check me-2"></i>Hasil Diagnosis</h2>
+    </div>
+    <div class="card-body p-4">
+        {% if hasil.utama is defined %}
+            <div class="disease-card p-3">
+                <h4>
+                    <i class="fas fa-viruses me-2"></i>
+                    {{ hasil.utama.nama }}
+                    <span class="disease-code">{{ hasil.utama.kode }}</span>
+                </h4>
+                <p>
+                    <strong>Tingkat Kecocokan:</strong>
+                    <span class="match-rate">{{ (hasil.utama.skor * 100)|round|int }}%</span>
+                    <span class="text-muted ms-2">({{ hasil.utama.gejala_cocok|length }} dari {{ hasil.utama.total_gejala }} gejala utama cocok)</span>
+                </p>
+                
+                <div class="solution-section">
+                    <h5><i class="fas fa-hand-holding-medical me-2"></i>Saran Penanganan:</h5>
+                    <p>{{ hasil.utama.solusi }}</p>
+                </div>
+                
+                <!-- Reasoning Trace Section -->
+                <div class="mb-3">
+                    <h5><i class="fas fa-code-branch me-2"></i>Jejak Penalaran:</h5>
+                    <div class="reasoning-trace">
+                        <ul class="list-group">
+                            {% for step in hasil.trace %}
+                            <li class="list-group-item">
+                                {{ step }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                  <div class="mb-3">
+                    <h6><i class="fas fa-check-circle me-2 text-success"></i>Gejala yang Cocok:</h6>
+                    <div class="symptom-grid">
+                        {% for gejala in hasil.utama.gejala_cocok_desc %}
+                        <div class="card symptom-card">
+                            <div class="symptom-image">
+                                {% set gejala_code = hasil.utama.gejala_cocok[loop.index0] if loop.index0 < hasil.utama.gejala_cocok|length else 'unknown' %}
+                                {% if gejala_code != 'unknown' %}
+                                    <img src="/static/images/gejala/{{ gejala_code }}.jpg" onerror="this.onerror=null; this.src='/static/images/placeholder.jpg'; this.alt='Gambar belum tersedia';" alt="Gejala {{ gejala_code }}">
+                                {% else %}
+                                    <div><i class="fas fa-image fa-3x"></i><br>Gambar belum tersedia</div>
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <div class="symptom-title">{{ gejala }}</div>
+                                <span class="badge bg-secondary">Kode: {{ gejala_code }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                {% if hasil.alternatif %}
+                    <hr>
+                    <h5 class="mt-3">Kemungkinan Alternatif:</h5>
+                    {% for alt in hasil.alternatif %}
+                        <div class="alternative-card p-3">
+                            <h5>
+                                <i class="fas fa-virus me-2"></i>
+                                {{ alt.nama }}
+                                <span class="disease-code">{{ alt.kode }}</span>
+                                <span class="match-rate" style="background-color: #ffc107; color: black;">{{ (alt.skor * 100)|round|int }}%</span>
+                            </h5>
+                            <p>{{ alt.solusi }}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% elif hasil.skor and hasil.skor > 0 %}
+            <div class="disease-card p-3">
+                <h4>
+                    <i class="fas fa-viruses me-2"></i>
+                    {{ hasil.nama }}
+                    <span class="disease-code">{{ hasil.kode }}</span>
+                </h4>
+                <p>
+                    <strong>Tingkat Kecocokan:</strong>
+                    <span class="match-rate">{{ (hasil.skor * 100)|round|int }}%</span>
+                    <span class="text-muted ms-2">({{ hasil.gejala_cocok|length }} dari {{ hasil.total_gejala }} gejala utama cocok)</span>
+                </p>
+                
+                <div class="solution-section">
+                    <h5><i class="fas fa-hand-holding-medical me-2"></i>Saran Penanganan:</h5>
+                    <p>{{ hasil.solusi }}</p>
+                </div>
+                
+                <!-- Reasoning Trace Section -->
+                <div class="mb-3">
+                    <h5><i class="fas fa-code-branch me-2"></i>Jejak Penalaran:</h5>
+                    <div class="reasoning-trace">
+                        <ul class="list-group">
+                            {% for step in hasil.trace %}
+                            <li class="list-group-item">
+                                {{ step }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                  <div class="mb-3">
+                    <h6><i class="fas fa-check-circle me-2 text-success"></i>Gejala yang Cocok:</h6>
+                    <div class="symptom-grid">
+                        {% for gejala in hasil.gejala_cocok_desc %}
+                        <div class="card symptom-card">
+                            <div class="symptom-image">
+                                {% set gejala_code = hasil.gejala_cocok[loop.index0] if loop.index0 < hasil.gejala_cocok|length else 'unknown' %}
+                                {% if gejala_code != 'unknown' %}
+                                    <img src="/static/images/gejala/{{ gejala_code }}.jpg" onerror="this.onerror=null; this.src='/static/images/placeholder.jpg'; this.alt='Gambar belum tersedia';" alt="Gejala {{ gejala_code }}">
+                                {% else %}
+                                    <div><i class="fas fa-image fa-3x"></i><br>Gambar belum tersedia</div>
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <div class="symptom-title">{{ gejala }}</div>
+                                <span class="badge bg-secondary">Kode: {{ gejala_code }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">
+                <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>{{ hasil.nama }}</h4>
+                <p>{{ hasil.solusi }}</p>
+            </div>
+        {% endif %}
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+            <a href="/diagnosis" class="btn btn-success me-md-2">
+                <i class="fas fa-sync-alt me-2"></i>Ulangi Diagnosis
+            </a>
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-home me-2"></i>Kembali ke Menu
+            </a>
+        </div>    </div>
+    <div class="card-footer text-muted small text-center">
+        <i class="fas fa-info-circle me-1"></i>
+        Diagnosis ini bersifat indikatif, konsultasikan dengan PPL untuk kepastian.
+    </div>
+</div>
+
+<!-- Toast notification for saved history -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="historyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-success text-white">
+            <i class="fas fa-check-circle me-2"></i>
+            <strong class="me-auto">SiPakJag</strong>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hasil diagnosis telah disimpan ke riwayat konsultasi.
+            <div class="mt-2 pt-2 border-top">
+                <a href="/riwayat" class="btn btn-sm btn-outline-success">Lihat Riwayat</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>    document.addEventListener('DOMContentLoaded', function() {
+        // Save diagnosis result to localStorage
+        saveDiagnosisToHistory();
+        
+        // Show toast notification
+        const toastEl = document.getElementById('historyToast');
+        if (typeof bootstrap !== 'undefined') {
+            const toast = new bootstrap.Toast(toastEl, { delay: 5000 });
+            toast.show();
+        } else {
+            // Fallback if bootstrap is not loaded yet
+            setTimeout(function() {
+                if (typeof bootstrap !== 'undefined') {
+                    const toast = new bootstrap.Toast(toastEl, { delay: 5000 });
+                    toast.show();
+                } else {
+                    console.error('Bootstrap library not loaded');
+                    toastEl.classList.add('show');
+                    setTimeout(function() {
+                        toastEl.classList.remove('show');
+                    }, 5000);
+                }
+            }, 1000);
+        }
+    });
+    
+    function saveDiagnosisToHistory() {
+        // Get existing history or initialize empty array
+        let history = JSON.parse(localStorage.getItem('jagungDiagnosisHistory')) || [];
+        
+        // Create history object with current diagnosis data
+        const diagnosisData = {
+            timestamp: new Date().toISOString(),
+            data: JSON.parse('{{ hasil|tojson|safe }}')
+        };
+        
+        // Add to history (at the beginning)
+        history.unshift(diagnosisData);
+        
+        // Limit history size to prevent excessive storage use (keep last 20 items)
+        if (history.length > 20) {
+            history = history.slice(0, 20);
+        }
+        
+        // Save back to localStorage
+        localStorage.setItem('jagungDiagnosisHistory', JSON.stringify(history));
+    }
+</script>
+{% endblock %}

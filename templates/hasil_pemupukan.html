@@ -1,0 +1,216 @@
+<!-- filepath: c:\laragon\www\jagung\templates\hasil_pemupukan.html -->
+{% extends "base.html" %}
+
+{% block title %}Hasil Rekomendasi Pemupukan{% endblock %}
+
+{% block extra_css %}
+<style>
+    .result-icon {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-right: 10px;
+    }
+
+    .detail-section {
+        background-color: #e8f4e3;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .fertilizer-amount {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #388e3c;
+    }
+
+    .alert-icon {
+        margin-right: 10px;
+    }
+
+    .table th {
+        background-color: #e0f2e9;
+    }
+
+    .list-group-item-success {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .list-group-item-info {
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+    }
+
+    .list-group-item-warning {
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card shadow">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0 text-center"><i class="fas fa-clipboard-check me-2"></i>Hasil Rekomendasi Pemupukan</h2>
+    </div>
+    <div class="card-body p-4">
+        <div class="detail-section">
+            <h5><i class="fas fa-info-circle me-2"></i>Informasi Tanaman</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <p><i class="fas fa-calendar-alt me-2"></i><strong>Umur:</strong> {{ hasil.umur }} HST</p>
+                </div>
+                <div class="col-md-4">
+                    <p><i class="fas fa-eye me-2"></i><strong>Gejala:</strong> {{ hasil.gejala_input }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p><i class="fas fa-mountain me-2"></i><strong>Tanah:</strong> {{ hasil.tanah_input }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <h4 class="mb-3 text-center fw-bold">{{ hasil.rekomendasi }}</h4>
+        
+        {% if hasil.rekomendasi != "Tidak Ada Jadwal Standar" %}
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-light">
+                    <th scope="col">Jenis Pupuk</th>
+                    <th scope="col">Dosis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><i class="fas fa-flask result-icon text-success"></i>Urea (N)</th>
+                    <td class="fertilizer-amount">{{ hasil.urea }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><i class="fas fa-flask result-icon text-primary"></i>SP-36 (P)</th>
+                    <td class="fertilizer-amount">{{ hasil.sp36 }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><i class="fas fa-flask result-icon text-warning"></i>KCl (K)</th>
+                    <td class="fertilizer-amount">{{ hasil.kcl }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endif %}
+        
+        <div class="mb-3">
+            <h5><i class="fas fa-hand-holding-medical me-2"></i>Cara Aplikasi:</h5>
+            <p>{{ hasil.cara }}</p>
+        </div>
+        
+        {% if hasil.catatan %}
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle alert-icon"></i><strong>Catatan:</strong> {{ hasil.catatan }}
+            </div>
+        {% endif %}
+        
+        <div class="alert alert-info small">
+            <i class="fas fa-lightbulb alert-icon"></i><strong>Penjelasan:</strong> {{ hasil.penjelasan }}
+        </div>
+        
+        <!-- Reasoning Trace Section -->
+        <div class="detail-section mt-4">
+            <h5><i class="fas fa-code-branch me-2"></i>Jejak Penalaran (Reasoning Trace):</h5>
+            <div class="reasoning-trace">
+                <ul class="list-group">
+                    {% for step in hasil.trace %}
+                    <li class="list-group-item {% if 'Rule:' in step %}list-group-item-success{% elif 'Modifier' in step %}list-group-item-info{% elif 'Final:' in step %}list-group-item-warning{% endif %}">
+                        {{ step }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+        {% if hasil.rekomendasi == "Tidak Ada Jadwal Standar" and hasil.trace %}
+          <div class="alert alert-warning mt-3">
+            <strong>Penjelasan:</strong>
+            <ul>
+              {% for step in hasil.trace %}
+                <li>{{ step }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+            <a href="/pemupukan" class="btn btn-success me-md-2">
+                <i class="fas fa-sync-alt me-2"></i>Ulangi Pemupukan
+            </a>
+            <a href="/" class="btn btn-outline-secondary">
+                <i class="fas fa-home me-2"></i>Kembali ke Menu
+            </a>        </div>
+    </div>
+</div>
+
+<!-- Toast notification for saved history -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="historyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-success text-white">
+            <i class="fas fa-check-circle me-2"></i>
+            <strong class="me-auto">SiPakJag</strong>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hasil rekomendasi pemupukan telah disimpan ke riwayat konsultasi.
+            <div class="mt-2 pt-2 border-top">
+                <a href="/riwayat" class="btn btn-sm btn-outline-success">Lihat Riwayat</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>    document.addEventListener('DOMContentLoaded', function() {
+        // Save fertilizer recommendation to localStorage
+        saveFertilizerToHistory();
+        
+        // Show toast notification
+        const toastEl = document.getElementById('historyToast');
+        if (typeof bootstrap !== 'undefined') {
+            const toast = new bootstrap.Toast(toastEl, { delay: 5000 });
+            toast.show();
+        } else {
+            // Fallback if bootstrap is not loaded yet
+            setTimeout(function() {
+                if (typeof bootstrap !== 'undefined') {
+                    const toast = new bootstrap.Toast(toastEl, { delay: 5000 });
+                    toast.show();
+                } else {
+                    console.error('Bootstrap library not loaded');
+                    toastEl.classList.add('show');
+                    setTimeout(function() {
+                        toastEl.classList.remove('show');
+                    }, 5000);
+                }
+            }, 1000);
+        }
+    });
+    
+    function saveFertilizerToHistory() {
+        // Get existing history or initialize empty array
+        let history = JSON.parse(localStorage.getItem('jagungFertilizerHistory')) || [];
+        
+        // Create history object with current fertilizer data
+        const fertilizerData = {
+            timestamp: new Date().toISOString(),
+            data: JSON.parse('{{ hasil|tojson|safe }}')
+        };
+        
+        // Add to history (at the beginning)
+        history.unshift(fertilizerData);
+        
+        // Limit history size to prevent excessive storage use (keep last 20 items)
+        if (history.length > 20) {
+            history = history.slice(0, 20);
+        }
+        
+        // Save back to localStorage
+        localStorage.setItem('jagungFertilizerHistory', JSON.stringify(history));
+    }
+</script>
+{% endblock %}

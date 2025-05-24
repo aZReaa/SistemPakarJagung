@@ -1,0 +1,83 @@
+<!-- filepath: c:\laragon\www\jagung\templates\pemupukan.html -->
+{% extends "base.html" %}
+
+{% block title %}Rekomendasi Pemupukan Jagung{% endblock %}
+
+{% block extra_css %}
+<style>
+    .fertilizer-info {
+        background-color: #e8f4e3;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .form-icon {
+        color: var(--primary-color);
+        margin-right: 10px;
+    }
+
+    label.required:after {
+        content:" *";
+        color: red;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card shadow">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0 text-center"><i class="fas fa-flask me-2"></i>Rekomendasi Pemupukan</h2>
+    </div>
+    <div class="card-body p-4">
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+            </div>
+        {% endif %}
+        <div class="fertilizer-info mb-4">
+            <h5><i class="fas fa-info-circle me-2"></i>Petunjuk Penggunaan</h5>
+            <p>Masukkan informasi tanaman jagung Anda untuk mendapatkan rekomendasi pemupukan yang tepat.</p>
+        </div>
+        <form action="/rekomendasi" method="POST">
+            <div class="mb-3">
+                <label for="umur_jagung" class="form-label fw-bold required">
+                    <i class="fas fa-calendar-alt form-icon"></i>Umur Tanaman (HST):
+                </label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="umur_jagung" name="umur_jagung" required min="0" placeholder="Contoh: 30">
+                    <span class="input-group-text">HST</span>
+                </div>
+                <div class="form-text">HST = Hari Setelah Tanam</div>
+            </div>
+            <div class="mb-3">
+                <label for="gejala" class="form-label fw-bold">
+                    <i class="fas fa-eye form-icon"></i>Gejala Visual (Jika Ada):
+                </label>
+                <select class="form-select" id="gejala" name="gejala">
+                    <option value="normal" selected>Normal</option>
+                    <option value="kuning_v">Daun tua kuning bentuk 'V'</option>
+                    <option value="ungu">Daun keunguan</option>
+                    <option value="pinggir_kuning">Pinggir daun tua kuning</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="jenis_tanah" class="form-label fw-bold">
+                    <i class="fas fa-mountain form-icon"></i>Jenis Tanah:
+                </label>
+                <select class="form-select" id="jenis_tanah" name="jenis_tanah">
+                    <option value="sedang" selected>Sedang / Lempung</option>
+                    <option value="ringan">Ringan / Berpasir</option>
+                    <option value="berat">Berat / Liat</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success w-100 py-2">
+                <i class="fas fa-search me-2"></i>Dapatkan Rekomendasi
+            </button>
+            <a href="/" class="btn btn-outline-secondary w-100 mt-2 py-2">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Menu
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %}

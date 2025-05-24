@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "version": "1.0",
+    "updated": "2025-05-23",
+    "author": "Tim Pakar Jagung"
+  },
+  "diseases": [
+    {
+      "kode": "P01",
+      "nama": "Bulai (Downy Mildew)",
+      "gejala": ["G01", "G02", "G03"],
+      "solusi": "Gunakan varietas tahan bulai. Lakukan perlakuan benih dengan fungisida. Cabut dan musnahkan tanaman terinfeksi. Semprot fungisida metalaksil atau mankozeb jika serangan parah."
+    },
+    {
+      "kode": "P02",
+      "nama": "Hawar Daun (Leaf Blight)",
+      "gejala": ["G04", "G05"],
+      "solusi": "Gunakan varietas tahan. Jaga kebersihan lahan. Lakukan rotasi tanaman. Semprot fungisida (misal: propikonazol) jika diperlukan."
+    },
+    {
+      "kode": "P03",
+      "nama": "Karat Daun (Leaf Rust)",
+      "gejala": ["G06", "G07"],
+      "solusi": "Gunakan varietas tahan. Jaga sanitasi lahan. Semprot fungisida (misal: tebukonazol) jika serangan meluas."
+    },
+    {
+      "kode": "H01",
+      "nama": "Penggerek Batang",
+      "gejala": ["G08", "G09"],
+      "solusi": "Lakukan tanam serempak. Gunakan perangkap feromon. Lepaskan musuh alami (Trichogramma). Jika parah, gunakan insektisida sistemik."
+    },
+    {
+      "kode": "H02",
+      "nama": "Penggerek Tongkol",
+      "gejala": ["G10"],
+      "solusi": "Tanam serempak. Sanitasi lahan. Semprotkan insektisida nabati atau kimiawi pada saat rambut jagung mulai keluar."
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistem Pakar Jagung - Aplikasi untuk rekomendasi pemupukan, diagnosis penyakit, dan informasi budidaya jagung">
+    <title>{% block title %}Sistem Pakar Jagung{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #FFC107;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --focus-color: rgba(76, 175, 80, 0.25);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f9f9f9;
+        }
+        
+        .main-content {
+            flex: 1 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+        }
+        
+        .navbar-brand i {
+            color: var(--secondary-color);
+            margin-right: 8px;
+        }
+        
+        .card {
+            border-radius: 0.8rem;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            border-bottom: none;
+            padding: 1.25rem;
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            flex-shrink: 0;
+        }
+        
+        /* Improved form controls for accessibility */
+        .form-control:focus, .form-select:focus, .form-check-input:focus, .btn:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem var(--focus-color);
+        }
+        
+        /* Better contrast in form labels */
+        .form-label {
+            font-weight: 500;
+            color: #212529;
+        }
+        
+        /* Skip to main content link for keyboard users */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* High contrast focus states for interactive elements */
+        a:focus, button:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        /* Improved responsiveness for small screens */
+        @media (max-width: 576px) {
+            .card-body {
+                padding: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+        }
+          .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #3d8b40;
+            border-color: #3d8b40;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        
+        .btn-warning {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+        }
+        
+        .btn-outline-warning {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-warning:hover {
+            background-color: var(--secondary-color);
+            color: #212529;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            padding: 3px 6px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            color: #212529;
+            font-size: 0.7rem;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/" aria-label="SiPakJag - Beranda"><i class="fas fa-seedling" aria-hidden="true"></i>SiPakJag</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">                <ul class="navbar-nav ms-auto">                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="fas fa-home me-1"></i>Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pemupukan"><i class="fas fa-flask me-1"></i>Pemupukan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/diagnosis"><i class="fas fa-stethoscope me-1"></i>Diagnosis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/budidaya"><i class="fas fa-book me-1"></i>Budidaya</a>
+                    </li>                    <li class="nav-item">
+                        <a class="nav-link" href="/kalkulator"><i class="fas fa-calculator me-1"></i>Kalkulator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search"><i class="fas fa-search me-1"></i>Cari</a>
+                    </li>                    <li class="nav-item">
+                        <a class="nav-link" href="/panduan"><i class="fas fa-question-circle me-1"></i>Bantuan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/riwayat"><i class="fas fa-history me-1"></i>Riwayat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/refresh_kb"><i class="fas fa-sync-alt me-1"></i>Refresh KB</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show mb-4" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <p><i class="fas fa-seedling me-2"></i>Sistem Pakar Jagung Terpadu &copy; {{ year }}</p>
+                    <p class="small">Dikembangkan untuk membantu petani dalam pemupukan dan identifikasi penyakit tanaman jagung.</p>
+                </div>
+            </div>
+        </div>
+    </footer>    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Check for today's notifications across the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get notifications from localStorage
+            let notifications = JSON.parse(localStorage.getItem('cornNotifications')) || [];
+            
+            // Check for today's notifications
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            const todayNotifications = notifications.filter(notif => {
+                const notifDate = new Date(notif.date);
+                notifDate.setHours(0, 0, 0, 0);
+                return notifDate.getTime() === today.getTime();
+            });
+            
+            // If there are today's notifications, show a badge
+            if (todayNotifications.length > 0) {
+                // Find the notification link in navbar
+                const calcLink = document.querySelector('a.nav-link[href="/kalkulator"]');
+                if (calcLink) {
+                    // Add a badge with the count
+                    const badge = document.createElement('span');
+                    badge.className = 'notification-badge';
+                    badge.textContent = todayNotifications.length;
+                    calcLink.style.position = 'relative';
+                    calcLink.appendChild(badge);
+                    
+                    // Optionally, add a toast notification for today's activities
+                    if (window.location.pathname === '/') {
+                        setTimeout(() => {
+                            const toastContainer = document.createElement('div');
+                            toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                            toastContainer.style.zIndex = '11';
+                            
+                            const toastHtml = `
+                                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="toast-header bg-warning text-dark">
+                                        <i class="fas fa-bell me-2"></i>
+                                        <strong class="me-auto">Pengingat Hari Ini</strong>
+                                        <small>Baru saja</small>
+                                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                    <div class="toast-body">
+                                        Anda memiliki ${todayNotifications.length} kegiatan budidaya jagung hari ini. 
+                                        <a href="/kalkulator" class="btn btn-sm btn-warning mt-2">Lihat Detail</a>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            toastContainer.innerHTML = toastHtml;
+                            document.body.appendChild(toastContainer);
+                            
+                            const toastElement = document.querySelector('.toast');
+                            const toast = new bootstrap.Toast(toastElement, { delay: 5000 });
+                            toast.show();
+                        }, 1000);
+                    }
+                }
+            }
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

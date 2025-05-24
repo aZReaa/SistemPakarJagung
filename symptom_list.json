@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "version": "1.0",
+    "updated": "2025-05-23",
+    "author": "Tim Pakar Jagung"
+  },
+  "symptoms": {
+    "G01": "Bercak putih/kuning bergaris di daun (terutama daun muda)",
+    "G02": "Daun kaku dan tegak",
+    "G03": "Tanaman kerdil",
+    "G04": "Bercak lonjong abu-abu/coklat di daun",
+    "G05": "Bercak bisa menyatu membuat daun kering",
+    "G06": "Bercak kecil (jerawat) kuning/coklat kemerahan di daun",
+    "G07": "Bercak bisa pecah mengeluarkan serbuk",
+    "G08": "Ada lubang di batang",
+    "G09": "Batang mudah patah",
+    "G10": "Ada ulat di dalam tongkol"
+  }
+}

@@ -1,0 +1,373 @@
+2025-05-23 19:39:35,793 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:39:35,854 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-23 19:39:35,854 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-23 19:39:35,857 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 19:39:36,063 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:39:36,087 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 19:39:36,091 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 19:39:53,200 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:39:53] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:39:57,815 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:39:57] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-23 19:39:57,927 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:39:57] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-23 19:39:57,929 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:39:57] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-23 19:39:57,964 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:39:57] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=I87rZyErhdHwtPmxpu56 HTTP/1.1" 200 -
+2025-05-23 19:39:57,982 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:39:57] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-23 19:40:42,463 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 19:40:42,501 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 19:40:42,740 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:40:42,764 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 19:40:42,766 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 19:40:49,490 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:40:49] "GET / HTTP/1.1" 200 -
+2025-05-23 19:42:11,166 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:42:11] "GET / HTTP/1.1" 200 -
+2025-05-23 19:42:13,898 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:42:13] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:42:18,468 - __main__ - INFO - Diagnosis penyakit untuk gejala: ['G01']
+2025-05-23 19:42:18,476 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:42:18] "POST /hasil_diagnosis HTTP/1.1" 200 -
+2025-05-23 19:42:21,228 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:42:21] "GET / HTTP/1.1" 200 -
+2025-05-23 19:42:22,609 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:42:22] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:42:33,792 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=40, gejala=ungu, tanah=sedang
+2025-05-23 19:42:33,796 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:42:33] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 19:43:02,797 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:43:02,799 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:43:02] "[32mGET /refresh_kb HTTP/1.1[0m" 302 -
+2025-05-23 19:43:02,809 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:43:02] "GET / HTTP/1.1" 200 -
+2025-05-23 19:43:04,920 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:43:04] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:43:08,569 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:43:08] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:43:33,115 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 19:43:33,145 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 19:43:33,378 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:43:33,406 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 19:43:33,408 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 19:43:44,149 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:43:44] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:43:50,520 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=40, gejala=normal, tanah=sedang
+2025-05-23 19:43:50,525 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:43:50] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 19:43:58,939 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:43:58] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:44:44,402 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:44:44] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:46:45,878 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:45] "GET / HTTP/1.1" 200 -
+2025-05-23 19:46:46,980 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:46] "GET / HTTP/1.1" 200 -
+2025-05-23 19:46:47,212 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:47] "GET / HTTP/1.1" 200 -
+2025-05-23 19:46:48,955 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:48] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:46:52,452 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:52] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:46:56,815 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:46:56,824 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:56] "[35m[1mGET /refresh_kb HTTP/1.1[0m" 500 -
+2025-05-23 19:46:56,916 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:56] "GET /refresh_kb?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-23 19:46:56,917 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:56] "GET /refresh_kb?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-23 19:46:56,930 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:56] "GET /refresh_kb?__debugger__=yes&cmd=resource&f=console.png&s=GWFBMAfiBPqHTzEJLR6c HTTP/1.1" 200 -
+2025-05-23 19:46:56,942 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:46:56] "GET /refresh_kb?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-23 19:47:00,849 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:47:00] "GET / HTTP/1.1" 200 -
+2025-05-23 19:47:02,259 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:47:02] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:47:04,846 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:47:04] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:47:40,692 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:47:40] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:47:41,435 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:47:41] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:47:41,615 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:47:41] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:00,214 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:00] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:00,933 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:00] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:01,114 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:01] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:01,325 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:01] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:05,441 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=50, gejala=normal, tanah=sedang
+2025-05-23 19:48:05,444 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:05] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 19:48:08,681 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:08] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:48:11,071 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:11] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:23,022 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:23] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:23,688 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:23] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:23,960 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:23] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:24,169 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:24] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:48:24,380 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:48:24] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:50:23,809 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 19:50:23,945 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 19:50:24,194 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:50:24,219 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 19:50:24,221 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 19:52:07,795 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:52:07,833 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-23 19:52:07,833 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-23 19:52:07,834 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 19:52:08,023 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:52:08,052 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 19:52:08,054 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 19:52:13,666 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:13] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:14,035 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:14] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:14,187 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:14] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:14,440 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:14] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:14,600 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:14] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:16,939 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:16] "GET / HTTP/1.1" 200 -
+2025-05-23 19:52:36,092 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:36] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:38,784 - __main__ - INFO - Diagnosis penyakit untuk gejala: ['G07']
+2025-05-23 19:52:38,792 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:38] "POST /hasil_diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:40,373 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:40] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:53,321 - __main__ - INFO - Diagnosis penyakit untuk gejala: ['G01', 'G02']
+2025-05-23 19:52:53,321 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:53] "POST /hasil_diagnosis HTTP/1.1" 200 -
+2025-05-23 19:52:55,965 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:55] "GET / HTTP/1.1" 200 -
+2025-05-23 19:52:57,046 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:52:57] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:53:04,913 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=50, gejala=ungu, tanah=sedang
+2025-05-23 19:53:04,916 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:53:04] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 19:53:10,234 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:53:10] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:53:16,310 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=20, gejala=pinggir_kuning, tanah=sedang
+2025-05-23 19:53:16,310 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:53:16] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 19:53:21,938 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:53:21] "GET / HTTP/1.1" 200 -
+2025-05-23 19:53:23,847 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:53:23] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 19:53:34,274 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=40, gejala=normal, tanah=sedang
+2025-05-23 19:53:34,275 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:53:34] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 19:53:42,878 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=40, gejala=pinggir_kuning, tanah=ringan
+2025-05-23 19:53:42,879 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 19:53:42] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 19:56:31,012 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 19:56:31,039 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 19:56:31,241 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-23 19:56:31,268 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 19:56:31,270 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:07:55,538 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:07:55,694 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:07:56,020 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:07:56,052 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:07:56,055 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:08:19,224 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:08:19,256 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:08:19,460 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:08:19,491 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:08:19,493 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:11:03,633 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:11:03,668 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:11:03,946 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:11:03,977 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:11:03,979 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:13:58,681 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:13:58,697 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:13:58] "GET / HTTP/1.1" 200 -
+2025-05-23 20:14:00,358 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:00] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 20:14:10,853 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=30, gejala=ungu, tanah=ringan
+2025-05-23 20:14:10,860 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:10] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 20:14:22,056 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=10, gejala=ungu, tanah=ringan
+2025-05-23 20:14:22,057 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:22] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 20:14:33,544 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=5, gejala=kuning_v, tanah=ringan
+2025-05-23 20:14:33,545 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:33] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 20:14:48,339 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:14:48,340 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:48] "GET / HTTP/1.1" 200 -
+2025-05-23 20:14:50,019 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:14:50,022 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:50] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:14:57,595 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:57] "[32mPOST /hasil_diagnosis HTTP/1.1[0m" 302 -
+2025-05-23 20:14:57,603 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:14:57,603 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:57] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:14:59,634 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:59] "[32mPOST /hasil_diagnosis HTTP/1.1[0m" 302 -
+2025-05-23 20:14:59,640 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:14:59,640 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:14:59] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:15:00,436 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:15:00] "[32mPOST /hasil_diagnosis HTTP/1.1[0m" 302 -
+2025-05-23 20:15:00,443 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:15:00,443 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:15:00] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:15:07,068 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:15:07,068 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:15:07] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:15:10,058 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:15:10] "[32mPOST /hasil_diagnosis HTTP/1.1[0m" 302 -
+2025-05-23 20:15:10,066 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:15:10,066 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:15:10] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:23:26,660 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:23:26,738 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:23:26,997 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:23:27,033 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:23:27,036 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:23:35,255 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:23:35,285 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:23:35,511 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:23:35,540 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:23:35,542 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:23:42,293 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:23:42,333 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:23:42,553 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:23:42,582 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:23:42,585 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:23:50,657 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:23:50,729 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:23:50,992 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:23:51,016 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:23:51,018 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:24:07,439 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:24:07,897 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:24:08,236 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:24:08,262 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:24:08,265 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:24:15,273 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:24:15,311 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:24:15,579 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:24:15,607 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:24:15,609 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:24:27,467 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:24:27,504 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:33:00,616 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:33:00,660 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-23 20:33:00,660 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-23 20:33:00,661 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:33:00,883 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:33:00,912 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:33:00,914 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:33:27,824 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:33:27,832 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:33:27] "GET / HTTP/1.1" 200 -
+2025-05-23 20:33:29,352 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:33:29] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 20:33:32,645 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:33:32] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:33:41,885 - __main__ - INFO - Diagnosis penyakit untuk gejala: ['G01']
+2025-05-23 20:33:41,899 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:33:41] "POST /hasil_diagnosis HTTP/1.1" 200 -
+2025-05-23 20:33:47,810 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:33:47,811 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:33:47] "GET / HTTP/1.1" 200 -
+2025-05-23 20:33:49,095 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:33:49] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 20:33:57,702 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=20, gejala=ungu, tanah=sedang
+2025-05-23 20:33:57,710 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:33:57] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 20:35:46,298 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:35:46,342 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-23 20:35:46,342 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-23 20:35:46,343 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:35:46,553 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:35:46,580 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:35:46,582 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:36:23,394 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=20, gejala=ungu, tanah=sedang
+2025-05-23 20:36:23,395 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:36:23] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 20:36:26,096 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:36:26] "[31m[1mGET /rekomendasi HTTP/1.1[0m" 405 -
+2025-05-23 20:36:34,907 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:36:34,913 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:36:34] "GET / HTTP/1.1" 200 -
+2025-05-23 20:36:40,657 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:36:40,658 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:36:40] "GET / HTTP/1.1" 200 -
+2025-05-23 20:36:42,821 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:36:42] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:36:52,203 - __main__ - INFO - Diagnosis penyakit untuk gejala: ['G07', 'G08', 'G09']
+2025-05-23 20:36:52,207 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:36:52] "POST /hasil_diagnosis HTTP/1.1" 200 -
+2025-05-23 20:37:02,412 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:37:02,412 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:02] "GET / HTTP/1.1" 200 -
+2025-05-23 20:37:03,772 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:03] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 20:37:16,031 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=5, gejala=kuning_v, tanah=ringan
+2025-05-23 20:37:16,032 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:16] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 20:37:33,919 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:37:33,920 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:33] "GET / HTTP/1.1" 200 -
+2025-05-23 20:37:35,413 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:35] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 20:37:41,405 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:41] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:37:50,891 - __main__ - INFO - Diagnosis penyakit untuk gejala: ['G01', 'G02']
+2025-05-23 20:37:50,893 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:50] "POST /hasil_diagnosis HTTP/1.1" 200 -
+2025-05-23 20:37:54,182 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:37:54,183 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:54] "GET / HTTP/1.1" 200 -
+2025-05-23 20:37:55,655 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:37:55,657 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:55] "[32mGET /refresh_kb HTTP/1.1[0m" 302 -
+2025-05-23 20:37:55,670 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:37:55,672 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:55] "GET / HTTP/1.1" 200 -
+2025-05-23 20:37:58,086 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:37:58] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 20:38:04,441 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=10, gejala=pinggir_kuning, tanah=sedang
+2025-05-23 20:38:04,444 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:38:04] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 20:48:56,696 - __main__ - INFO - Rekomendasi pemupukan untuk: umur=10, gejala=pinggir_kuning, tanah=sedang
+2025-05-23 20:48:56,760 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:48:56] "POST /rekomendasi HTTP/1.1" 200 -
+2025-05-23 20:49:03,372 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:49:03,378 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:49:03] "GET / HTTP/1.1" 200 -
+2025-05-23 20:49:06,908 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:49:06] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 20:49:10,361 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:49:10] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:49:12,490 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:49:12] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 20:49:13,325 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:49:13] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 20:49:14,140 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:49:14,141 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:49:14] "GET / HTTP/1.1" 200 -
+2025-05-23 20:49:59,230 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:49:59,526 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:49:59,559 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 20:49:59,799 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 20:50:00,284 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:50:00,379 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:50:00,388 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:50:00,567 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 20:50:00,619 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 20:50:00,623 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 20:53:32,381 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 20:53:32,401 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:53:32] "GET / HTTP/1.1" 200 -
+2025-05-23 20:53:34,149 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 20:53:34] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-23 21:00:42,685 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:00:42,689 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:00:42] "GET / HTTP/1.1" 200 -
+2025-05-23 21:00:54,957 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:00:54] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-23 21:16:34,943 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 21:16:34,963 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 21:16:35,100 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:16:35,109 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:16:35,608 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:16:35,609 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:16:35,670 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:16:35,673 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:16:35,675 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:16:35,683 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:19:05,765 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:19:05,855 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-23 21:19:05,855 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-23 21:19:05,856 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:19:06,379 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:19:06,444 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:19:06,449 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:19:13,435 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:19:13,464 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:19:13] "GET / HTTP/1.1" 200 -
+2025-05-23 21:19:19,837 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:19:19] "GET /kalkulator HTTP/1.1" 200 -
+2025-05-23 21:19:56,666 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 21:19:56,762 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:19:56,784 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 21:19:56,882 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 21:19:56,967 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:19:57,123 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:19:57,382 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:19:57,497 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:19:57,500 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:19:57,643 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:19:57,669 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:19:57,694 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:19:57,697 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:19:57,712 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:19:57,716 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:22:16,226 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:22:16,295 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-23 21:22:16,295 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-23 21:22:16,296 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:22:16,676 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:22:16,728 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:22:16,731 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:22:18,637 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:22:18] "GET /kalkulator HTTP/1.1" 200 -
+2025-05-23 21:22:35,387 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:22:35,390 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:22:35] "GET / HTTP/1.1" 200 -
+2025-05-23 21:23:09,412 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 21:23:09,467 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:23:09,852 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:23:09,903 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:23:09,906 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:23:24,347 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:23:24] "GET /search HTTP/1.1" 200 -
+2025-05-23 21:23:27,431 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:23:27] "GET /search?q=persiapan+lahan HTTP/1.1" 200 -
+2025-05-23 21:23:29,629 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:23:29] "GET /budidaya HTTP/1.1" 200 -
+2025-05-23 21:23:33,051 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:23:33,055 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:23:33] "GET / HTTP/1.1" 200 -
+2025-05-23 21:23:37,557 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:23:37] "GET /budidaya HTTP/1.1" 200 -
+2025-05-23 21:28:20,909 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:28:20] "GET /budidaya HTTP/1.1" 200 -
+2025-05-23 21:28:24,437 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:28:24] "GET /search HTTP/1.1" 200 -
+2025-05-23 21:28:26,342 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:28:26] "GET /search?q=waktu+panen HTTP/1.1" 200 -
+2025-05-23 21:28:28,456 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:28:28] "GET /budidaya HTTP/1.1" 200 -
+2025-05-23 21:28:31,949 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:28:31,950 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:28:31] "GET / HTTP/1.1" 200 -
+2025-05-23 21:28:43,616 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 21:28:43,690 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:28:44,221 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:28:44,302 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:28:44,305 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:33:21,613 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-23 21:33:21,922 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:33:22,534 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:33:22,596 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:33:22,601 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:36:38,901 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:36:38,943 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:36:38] "GET / HTTP/1.1" 200 -
+2025-05-23 21:40:11,765 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:40:11,865 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-23 21:40:11,865 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-23 21:40:11,867 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:40:12,306 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:40:12,358 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:40:12,362 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:45:12,852 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:45:12,963 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-23 21:45:12,963 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-23 21:45:12,967 - werkzeug - INFO -  * Restarting with stat
+2025-05-23 21:45:13,448 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-23 21:45:13,513 - werkzeug - WARNING -  * Debugger is active!
+2025-05-23 21:45:13,518 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-23 21:47:34,132 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:47:34,140 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:47:34] "GET / HTTP/1.1" 200 -
+2025-05-23 21:47:37,481 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:47:37] "GET /kalkulator HTTP/1.1" 200 -
+2025-05-23 21:47:41,289 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:47:41,290 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:47:41] "GET / HTTP/1.1" 200 -
+2025-05-23 21:47:45,647 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:47:45] "GET /panduan HTTP/1.1" 200 -
+2025-05-23 21:48:03,521 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-23 21:48:03,522 - werkzeug - INFO - 127.0.0.1 - - [23/May/2025 21:48:03] "GET / HTTP/1.1" 200 -

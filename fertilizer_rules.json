@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "version": "1.0",
+    "updated": "2025-05-23",
+    "author": "Tim Pakar Jagung"
+  },
+  "rules": [
+    {
+      "min_hst": 0,
+      "max_hst": 7,
+      "nama": "Pemupukan Dasar",
+      "urea": 100,
+      "sp36": 150,
+      "kcl": 50,
+      "cara": "Tugal/larikan dekat benih (5-7 cm), tutup tanah.",
+      "penjelasan": "Fase awal tanam, membutuhkan N, P, dan K untuk fondasi pertumbuhan."
+    },
+    {
+      "min_hst": 21,
+      "max_hst": 28,
+      "nama": "Pemupukan Susulan I",
+      "urea": 150,
+      "sp36": 0,
+      "kcl": 0,
+      "cara": "Tabur di samping barisan tanaman (5-10 cm), timbun sedikit.",
+      "penjelasan": "Fase vegetatif, membutuhkan banyak Nitrogen (N) untuk pertumbuhan daun dan batang."
+    },
+    {
+      "min_hst": 35,
+      "max_hst": 45,
+      "nama": "Pemupukan Susulan II",
+      "urea": 100,
+      "sp36": 0,
+      "kcl": 50,
+      "cara": "Tabur di antara barisan tanaman, timbun sedikit.",
+      "penjelasan": "Menjelang fase generatif, membutuhkan N dan Kalium (K) untuk pengisian biji."
+    }
+  ],
+  "gejala_modifiers": {
+    "kuning_v": {"urea_tambah": 50, "catatan": "Gejala 'Daun Kuning V' mengindikasikan kekurangan Nitrogen. Dosis Urea ditambah."},
+    "ungu": {"catatan": "Gejala 'Daun Keunguan' bisa mengindikasikan kekurangan Fosfor (P). Pastikan pemupukan dasar (SP-36) optimal."},
+    "pinggir_kuning": {"catatan": "Gejala 'Pinggir Daun Tua Kuning' bisa mengindikasikan kekurangan Kalium (K). Pastikan pemupukan KCl sesuai jadwal."},
+    "normal": {"catatan": "Tidak ada gejala spesifik, pemupukan standar diterapkan."}
+  },
+  "tanah_modifiers": {
+    "ringan": {"N_mult": 1.1, "P_mult": 1.0, "K_mult": 1.1, "catatan": "Tanah ringan/pasir cenderung mudah kehilangan N & K, dosis sedikit ditingkatkan."},
+    "sedang": {"N_mult": 1.0, "P_mult": 1.0, "K_mult": 1.0, "catatan": "Tanah sedang/lempung, dosis standar diterapkan."},
+    "berat": {"N_mult": 1.0, "P_mult": 1.1, "K_mult": 1.0, "catatan": "Tanah berat/liat mungkin mengikat P, dosis P sedikit ditingkatkan."}
+  }
+}
