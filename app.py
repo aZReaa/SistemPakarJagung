@@ -1,14 +1,14 @@
-from flask import Flask, render_template, request, flash, jsonify, redirect
+from flask import Flask, render_template, request, flash, jsonify, redirect, url_for
 from functools import lru_cache
+from datetime import datetime
 import json
 import logging
 import os
-from datetime import datetime
 
 # Import konfigurasi
 from config import (
-    DEBUG, KNOWLEDGE_BASE_PATH, LOG_FORMAT, LOG_LEVEL, 
-    LOG_FILE, CACHE_TIMEOUT
+    DEBUG, KNOWLEDGE_BASE_PATH, LOG_FORMAT, LOG_LEVEL,
+    LOG_FILE, CACHE_TIMEOUT, APP_ROOT
 )
 
 # Konfigurasi logging
@@ -31,10 +31,10 @@ last_kb_load_time = None
 def should_reload_kb():
     """Memeriksa apakah knowledge base perlu dimuat ulang."""
     global last_kb_load_time
-    
+
     if last_kb_load_time is None:
         return True
-        
+
     # Reload jika file berubah setelah loading terakhir
     try:
         kb_file_mtime = os.path.getmtime(KNOWLEDGE_BASE_PATH)
@@ -90,7 +90,7 @@ def load_knowledge_base(filepath=KNOWLEDGE_BASE_PATH, force_reload=False):
 
 class FertilizerInferenceEngine:
     def __init__(self, rules_path='fertilizer_rules.json'):
-        self.rules_path = rules_path
+        self.rules_path = os.path.join(APP_ROOT, rules_path)
         self.kb = self._load_kb()
         self.base_rules = self.kb.get('rules', [])
         self.gejala_mods = self.kb.get('gejala_modifiers', {})
@@ -144,8 +144,8 @@ class FertilizerInferenceEngine:
 
 class DiseaseInferenceEngine:
     def __init__(self, rules_path='disease_rules.json', symptoms_path='symptom_list.json'):
-        self.rules_path = rules_path
-        self.symptoms_path = symptoms_path
+        self.rules_path = os.path.join(APP_ROOT, rules_path)
+        self.symptoms_path = os.path.join(APP_ROOT, symptoms_path)
         self.kb = self._load_kb()
         self.symptoms = self._load_symptoms()
         self.diseases = self.kb.get('diseases', [])
@@ -258,10 +258,10 @@ def api_pemupukan():
         umur = int(data.get('umur_jagung', 0))
         gejala = data.get('gejala', 'normal')
         jenis_tanah = data.get('jenis_tanah', 'sedang')
-        
+
         if umur < 0:
             return jsonify({"error": "Umur tidak boleh negatif."}), 400
-            
+
         hasil = get_fertilizer_logic(umur, gejala, jenis_tanah)
         return jsonify(hasil)
     except Exception as e:
@@ -274,7 +274,7 @@ def api_diagnosis():
     try:
         data = request.get_json()
         selected_gejala = data.get('gejala', [])
-        
+
         hasil = get_diagnosis_logic(tuple(selected_gejala))
         return jsonify(hasil)
     except Exception as e:
@@ -286,7 +286,6 @@ def api_diagnosis():
 @app.route('/')
 def home():
     """Menampilkan halaman menu utama."""
-    # Muat knowledge base di awal
     load_knowledge_base()
     current_year = datetime.now().year
     return render_template('index.html', year=current_year)
@@ -299,217 +298,148 @@ def budidaya():
 
 @app.route('/kalkulator')
 def kalkulator():
-    """Menampilkan kalkulator kebutuhan benih dan pupuk."""
+    """Menampilkan halaman kalkulator."""
     current_year = datetime.now().year
+    # Logika untuk kalkulator bisa ditambahkan di sini jika ada
     return render_template('kalkulator.html', year=current_year)
 
 @app.route('/panduan')
 def panduan():
-    """Menampilkan panduan penggunaan aplikasi."""
+    """Menampilkan halaman panduan."""
     current_year = datetime.now().year
     return render_template('panduan.html', year=current_year)
 
 @app.route('/riwayat')
 def riwayat():
-    """Menampilkan riwayat konsultasi."""
+    """Menampilkan halaman riwayat."""
     current_year = datetime.now().year
     return render_template('riwayat.html', year=current_year)
 
-@app.route('/search')
+
+@app.route('/search') # Placeholder, sesuaikan jika ada fungsionalitas search
 def search():
-    """Pencarian informasi di seluruh aplikasi."""
+    """Menampilkan halaman pencarian (jika ada)."""
     query = request.args.get('q', '')
-    results = []
-    
-    if query:
-        # Pencarian di informasi budidaya
-        if 'lahan' in query.lower() or 'persiapan' in query.lower() or 'tanah' in query.lower():
-            results.append({
-                'category': 'Budidaya',
-                'title': 'Persiapan Lahan',
-                'content': 'Informasi tentang pengolahan tanah, kondisi tanah ideal, pH tanah, dan pupuk dasar untuk persiapan lahan jagung.',
-                'url': '/budidaya#nav-persiapan'
-            })
-            
-        if 'tanam' in query.lower() or 'benih' in query.lower() or 'biji' in query.lower():
-            results.append({
-                'category': 'Budidaya',
-                'title': 'Penanaman Jagung',
-                'content': 'Panduan waktu tanam, jarak tanam, kebutuhan benih, dan teknik penanaman jagung yang benar.',
-                'url': '/budidaya#nav-penanaman'
-            })
-            
-        if 'air' in query.lower() or 'irigasi' in query.lower() or 'pengairan' in query.lower():
-            results.append({
-                'category': 'Budidaya',
-                'title': 'Pengairan Jagung',
-                'content': 'Informasi kebutuhan air per fase pertumbuhan, teknik irigasi, dan fase kritis kebutuhan air pada jagung.',
-                'url': '/budidaya#nav-pengairan'
-            })
-            
-        if 'panen' in query.lower() or 'hasil' in query.lower():
-            results.append({
-                'category': 'Budidaya',
-                'title': 'Panen Jagung',
-                'content': 'Panduan waktu panen yang tepat, tanda-tanda jagung siap panen, dan teknik pemanenan yang benar.',
-                'url': '/budidaya#nav-panen'
-            })
-            
-        if 'pasca' in query.lower() or 'simpan' in query.lower() or 'kering' in query.lower():
-            results.append({
-                'category': 'Budidaya',
-                'title': 'Pasca Panen',
-                'content': 'Informasi penanganan hasil panen, pengeringan, penyimpanan, dan pencegahan kerusakan pada jagung.',
-                'url': '/budidaya#nav-pascapanen'
-            })
-        
-        # Pencarian di informasi pemupukan
-        if 'pupuk' in query.lower() or 'urea' in query.lower() or 'npk' in query.lower() or 'sp36' in query.lower() or 'kcl' in query.lower():
-            results.append({
-                'category': 'Pemupukan',
-                'title': 'Rekomendasi Pemupukan',
-                'content': 'Dapatkan rekomendasi dosis dan jenis pupuk berdasarkan umur tanaman jagung, gejala tanaman, dan jenis tanah.',
-                'url': '/pemupukan'
-            })
-            results.append({
-                'category': 'Kalkulator',
-                'title': 'Kalkulator Kebutuhan Pupuk',
-                'content': 'Hitung jumlah pupuk yang dibutuhkan (Urea, SP-36, KCl, dan pupuk organik) berdasarkan luas lahan dan jenis tanah.',
-                'url': '/kalkulator#fertilizer'
-            })
-        
-        # Pencarian di informasi penyakit
-        if 'penyakit' in query.lower() or 'hama' in query.lower() or 'bulai' in query.lower() or 'karat' in query.lower() or 'busuk' in query.lower():
-            results.append({
-                'category': 'Diagnosis',
-                'title': 'Diagnosis Penyakit dan Hama',
-                'content': 'Identifikasi penyakit dan hama pada tanaman jagung berdasarkan gejala yang terlihat, beserta rekomendasi pengendaliannya.',
-                'url': '/diagnosis'
-            })
-        
-        # Pencarian di kalkulator
-        if 'kalkulator' in query.lower() or 'hitung' in query.lower():
-            results.append({
-                'category': 'Kalkulator',
-                'title': 'Kalkulator Kebutuhan Benih',
-                'content': 'Hitung jumlah benih jagung yang dibutuhkan berdasarkan luas lahan dan jarak tanam yang digunakan.',
-                'url': '/kalkulator#seed'
-            })
-            results.append({
-                'category': 'Kalkulator',
-                'title': 'Kalkulator Kebutuhan Pupuk',
-                'content': 'Hitung jumlah pupuk yang dibutuhkan berdasarkan luas lahan dan jenis tanah Anda.',
-                'url': '/kalkulator#fertilizer'
-            })
-            
-        # Pencarian pengingat
-        if 'pengingat' in query.lower() or 'notifikasi' in query.lower() or 'agenda' in query.lower() or 'jadwal' in query.lower():
-            results.append({
-                'category': 'Pengingat',
-                'title': 'Pengingat Budidaya',
-                'content': 'Atur dan kelola pengingat untuk kegiatan budidaya jagung seperti pemupukan, penyemprotan, dan pengairan.',
-                'url': '/kalkulator'
-            })
-    
+    # Logika pencarian di sini
+    results = [] # Ganti dengan hasil pencarian aktual
     current_year = datetime.now().year
     return render_template('search.html', query=query, results=results, year=current_year)
 
+
 @app.route('/pemupukan', methods=['GET'])
 def form_pemupukan():
-    """Menampilkan form pemupukan."""
+    """Menampilkan form untuk rekomendasi pemupukan."""
+    # Muat data yang mungkin diperlukan untuk form (misal dari fertilizer_rules.json)
+    try:
+        with open(os.path.join(APP_ROOT,'fertilizer_rules.json'), 'r', encoding='utf-8') as f:
+            fertilizer_data = json.load(f)
+        gejala_options = fertilizer_data.get('gejala_options', [])
+        tanah_options = fertilizer_data.get('tanah_options', [])
+    except Exception as e:
+        logger.error(f"Gagal memuat opsi untuk form pemupukan: {e}")
+        gejala_options = []
+        tanah_options = []
     current_year = datetime.now().year
-    return render_template('pemupukan.html', year=current_year)
+    return render_template('pemupukan.html', gejala_options=gejala_options, tanah_options=tanah_options, year=current_year)
+
 
 @app.route('/rekomendasi', methods=['POST'])
 def rekomendasi_pemupukan():
-    """Memproses form pemupukan."""
+    """Memproses form pemupukan dan menampilkan hasil."""
     try:
-        umur_str = request.form.get('umur_jagung', '').strip()
-        if not umur_str.isdigit():
-            flash("Umur harus berupa angka bulat positif", "danger")
-            return render_template('pemupukan.html', error="Umur harus berupa angka bulat positif.", year=datetime.now().year)
-        umur = int(umur_str)
-        if umur < 0:
-            flash("Umur tanaman tidak boleh negatif", "danger")
-            return render_template('pemupukan.html', error="Umur tidak boleh negatif.", year=datetime.now().year)
+        umur_jagung = int(request.form.get('umur_jagung', 0))
         gejala = request.form.get('gejala', 'normal')
         jenis_tanah = request.form.get('jenis_tanah', 'sedang')
-        hasil = get_fertilizer_logic(umur, gejala, jenis_tanah)
-        logger.info(f"Rekomendasi pemupukan untuk: umur={umur}, gejala={gejala}, tanah={jenis_tanah}")
-        # Jika tidak ada rule yang cocok, reasoning trace akan menjelaskan alasannya
-        if hasil['rekomendasi'] == "Tidak Ada Jadwal Standar":
-            flash("Tidak ada jadwal pemupukan standar untuk umur ini. Lihat penjelasan di bawah.", "warning")
-        return render_template('hasil_pemupukan.html', hasil=hasil, year=datetime.now().year)
+
+        if umur_jagung <= 0:
+            flash('Umur jagung harus lebih dari 0.', 'error')
+            return redirect(request.referrer or url_for('form_pemupukan'))
+
+        hasil = get_fertilizer_logic(umur_jagung, gejala, jenis_tanah)
+        current_year = datetime.now().year
+        return render_template('hasil_pemupukan.html', hasil=hasil, year=current_year)
+    except ValueError:
+        flash('Input umur jagung tidak valid.', 'error')
+        return redirect(request.referrer or url_for('form_pemupukan'))
     except Exception as e:
-        logger.error(f"Error pada rekomendasi pemupukan: {e}")
-        flash(f"Terjadi kesalahan: {e}", "danger")
-        return render_template('pemupukan.html', error=f"Error: {e}", year=datetime.now().year)
+        logger.error(f"Error pada rekomendasi_pemupukan: {e}")
+        flash('Terjadi kesalahan saat memproses permintaan.', 'error')
+        return redirect(request.referrer or url_for('form_pemupukan'))
 
 @app.route('/diagnosis', methods=['GET'])
 def form_diagnosis():
-    """Menampilkan form diagnosis."""
+    """Menampilkan form untuk diagnosis penyakit."""
     try:
-        # Load symptoms directly from symptom_list.json
-        with open('symptom_list.json', 'r', encoding='utf-8') as f:
-            symptom_data = json.load(f)
-            gejala = symptom_data.get('symptoms', {})
-        
-        current_year = datetime.now().year
-        return render_template('diagnosis.html', gejala=gejala, year=current_year)
+        with open(os.path.join(APP_ROOT, 'symptom_list.json'), 'r', encoding='utf-8') as f:
+            symptoms_data = json.load(f)
+        gejala_list = symptoms_data.get('symptoms', {}) # {kode: deskripsi}
     except Exception as e:
-        logger.error(f"Error loading symptoms: {e}")
-        flash(f"Terjadi kesalahan saat memuat daftar gejala: {e}", "danger")
-        return redirect('/')
+        logger.error(f"Gagal memuat daftar gejala: {e}")
+        gejala_list = {}
+    current_year = datetime.now().year
+    return render_template('diagnosis.html', gejala_list=gejala_list, year=current_year)
+
 
 @app.route('/hasil_diagnosis', methods=['POST'])
 def hasil_diagnosis():
-    """Memproses form diagnosis."""
+    """Memproses form diagnosis dan menampilkan hasil."""
+    selected_gejala_codes = request.form.getlist('gejala')
+    if not selected_gejala_codes:
+        flash('Pilih setidaknya satu gejala.', 'warning')
+        return redirect(request.referrer or url_for('form_diagnosis'))
+
+    hasil = get_diagnosis_logic(tuple(selected_gejala_codes)) # tuple() untuk memastikan hashable
+
+    # Ambil deskripsi gejala yang dipilih untuk ditampilkan
     try:
-        selected_gejala = request.form.getlist('gejala_check')  # Ambil semua checkbox yang dicentang
-        
-        if not selected_gejala:
-            flash("Pilih setidaknya satu gejala untuk melakukan diagnosis", "warning")
-            return redirect('/diagnosis')
-            
-        # Log untuk analisis
-        logger.info(f"Diagnosis penyakit untuk gejala: {selected_gejala}")
-        
-        # Get diagnosis results
-        hasil = get_diagnosis_logic(tuple(selected_gejala))
-        
-        # Pass current year to template for footer
-        current_year = datetime.now().year
-        
-        return render_template('hasil_diagnosis.html', hasil=hasil, year=current_year)
+        with open(os.path.join(APP_ROOT, 'symptom_list.json'), 'r', encoding='utf-8') as f:
+            symptoms_data = json.load(f)
+        symptoms_map = symptoms_data.get('symptoms', {})
+        selected_symptoms_full = {k: symptoms_map.get(k, k) for k in selected_gejala_codes}
     except Exception as e:
-        logger.error(f"Error pada diagnosis: {e}")
-        flash(f"Terjadi kesalahan saat melakukan diagnosis: {e}", "danger")
-        return redirect('/diagnosis')
+        logger.error(f"Gagal memuat deskripsi gejala: {e}")
+        selected_symptoms_full = {k: k for k in selected_gejala_codes}
+
+
+    current_year = datetime.now().year
+    # Pastikan 'utama' dan 'alternatif' ada di hasil jika itu strukturnya
+    if 'utama' in hasil: # Ini menandakan struktur hasil dengan utama dan alternatif
+        return render_template('hasil_diagnosis.html',
+                               hasil_utama=hasil.get('utama'),
+                               hasil_alternatif=hasil.get('alternatif', []),
+                               gejala_dipilih_map=selected_symptoms_full,
+                               year=current_year)
+    else: # Ini menandakan struktur hasil tunggal atau tidak ditemukan
+        return render_template('hasil_diagnosis.html',
+                               hasil_utama=hasil, # Bisa jadi ini adalah hasil tunggal atau "Tidak Ditemukan"
+                               hasil_alternatif=[],
+                               gejala_dipilih_map=selected_symptoms_full,
+                               year=current_year)
+
 
 @app.route('/refresh_kb', methods=['GET'])
 def refresh_knowledge_base():
-    """Endpoint untuk memaksa reload knowledge base."""
-    try:
-        kb = load_knowledge_base(force_reload=True)
-        flash("Basis pengetahuan berhasil dimuat ulang", "success")
-    except Exception as e:
-        flash(f"Gagal memuat ulang basis pengetahuan: {e}", "danger")
-    return redirect('/')
+    """Memuat ulang knowledge base secara manual."""
+    load_knowledge_base(force_reload=True)
+    flash('Basis pengetahuan berhasil dimuat ulang.', 'info')
+    return redirect(url_for('home'))
+
 
 # --- Error Handlers ---
 
 @app.errorhandler(404)
 def page_not_found(e):
-    """Handle 404 errors."""
+    """Menangani error 404."""
+    logger.warning(f"404 Not Found: {request.url} (Error: {e})")
     current_year = datetime.now().year
-    return render_template('error.html', error="Halaman tidak ditemukan", year=current_year), 404
+    return render_template('error.html', error_code=404, error_message="Halaman tidak ditemukan.", year=current_year), 404
 
 @app.errorhandler(500)
 def server_error(e):
-    """Handle 500 errors."""
-    logger.error(f"Server error: {e}")
+    """Menangani error 500."""
+    logger.error(f"500 Internal Server Error: {request.url} (Error: {e})")
     current_year = datetime.now().year
-    return render_template('error.html', error="Terjadi kesalahan server", year=current_year), 500
+    return render_template('error.html', error_code=500, error_message="Terjadi kesalahan pada server.", year=current_year), 500
 
 # --- Main ---
 if __name__ == '__main__':

@@ -412,3 +412,13 @@
 2025-05-24 11:31:04,842 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
 2025-05-24 11:31:04,900 - werkzeug - WARNING -  * Debugger is active!
 2025-05-24 11:31:04,903 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-24 11:35:54,002 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-24 11:35:54,088 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 11:35:54,672 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
+2025-05-24 11:35:54,734 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 11:35:54,740 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-24 11:36:22,952 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
+2025-05-24 11:36:23,009 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 11:36:23,488 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
+2025-05-24 11:36:23,545 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 11:36:23,548 - werkzeug - INFO -  * Debugger PIN: 139-055-553
