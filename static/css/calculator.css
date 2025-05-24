@@ -1,0 +1,149 @@
+/* Calculator and other utility pages styles */
+
+.calculator-section {
+    margin-bottom: 2rem;
+}
+
+.calculator-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+}
+
+.result-card {
+    background-color: #f8f9fa;
+    border-left: 5px solid var(--primary-color);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 5px;
+    display: none;
+}
+
+.result-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.result-table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.result-table th {
+    background-color: #e8f4e3;
+    color: var(--dark-color);
+    padding: 0.75rem;
+}
+
+.info-card {
+    background-color: #e8f4e3;
+    border-left: 5px solid var(--primary-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.form-select, .form-control {
+    border-radius: 0.5rem;
+}
+
+.notification-section {
+    margin-top: 3rem;
+}
+
+.notification-card {
+    background-color: #fff8e1;
+    border-left: 5px solid var(--secondary-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+#notificationsContainer {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item.today {
+    background-color: #e8f4e3;
+    border-left: 4px solid var(--primary-color);
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.notification-title {
+    font-weight: 600;
+}
+
+.notification-message {
+    margin-bottom: 0.5rem;
+}
+
+.notification-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.result-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.notification-form {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.notification-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.notification-date {
+    .notification-date {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+}
+
+.notification-activity {
+    color: #6c757d;
+}
+
+.delete-notification {
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.delete-notification:hover {
+    color: #c82333;
+}

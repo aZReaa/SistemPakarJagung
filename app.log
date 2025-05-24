@@ -407,33 +407,236 @@
 2025-05-24 11:20:32,683 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
 2025-05-24 11:20:32,744 - werkzeug - WARNING -  * Debugger is active!
 2025-05-24 11:20:32,751 - werkzeug - INFO -  * Debugger PIN: 139-055-553
-2025-05-24 11:31:04,127 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\config.py', reloading
-2025-05-24 11:31:04,285 - werkzeug - INFO -  * Restarting with stat
-2025-05-24 11:31:04,842 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
-2025-05-24 11:31:04,900 - werkzeug - WARNING -  * Debugger is active!
-2025-05-24 11:31:04,903 - werkzeug - INFO -  * Debugger PIN: 139-055-553
-2025-05-24 11:35:54,002 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
-2025-05-24 11:35:54,088 - werkzeug - INFO -  * Restarting with stat
-2025-05-24 11:35:54,672 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
-2025-05-24 11:35:54,734 - werkzeug - WARNING -  * Debugger is active!
-2025-05-24 11:35:54,740 - werkzeug - INFO -  * Debugger PIN: 139-055-553
-2025-05-24 11:36:22,952 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
-2025-05-24 11:36:23,009 - werkzeug - INFO -  * Restarting with stat
-2025-05-24 11:36:23,488 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
-2025-05-24 11:36:23,545 - werkzeug - WARNING -  * Debugger is active!
-2025-05-24 11:36:23,548 - werkzeug - INFO -  * Debugger PIN: 139-055-553
-2025-05-24 11:40:28,240 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\config.py', reloading
-2025-05-24 11:40:28,322 - werkzeug - INFO -  * Restarting with stat
-2025-05-24 11:40:29,070 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
-2025-05-24 11:40:29,144 - werkzeug - WARNING -  * Debugger is active!
-2025-05-24 11:40:29,149 - werkzeug - INFO -  * Debugger PIN: 139-055-553
-2025-05-24 11:42:17,079 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\config.py', reloading
-2025-05-24 11:42:17,150 - werkzeug - INFO -  * Restarting with stat
-2025-05-24 11:42:17,702 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
-2025-05-24 11:42:17,754 - werkzeug - WARNING -  * Debugger is active!
-2025-05-24 11:42:17,758 - werkzeug - INFO -  * Debugger PIN: 139-055-553
-2025-05-24 11:42:25,040 - werkzeug - INFO -  * Detected change in 'c:\\laragon\\www\\jagung\\app.py', reloading
-2025-05-24 11:42:25,113 - werkzeug - INFO -  * Restarting with stat
-2025-05-24 11:42:25,628 - __main__ - ERROR - File c:\laragon\www\jagung\knowledge_base.json tidak ditemukan.
-2025-05-24 11:42:25,699 - werkzeug - WARNING -  * Debugger is active!
-2025-05-24 11:42:25,704 - werkzeug - INFO -  * Debugger PIN: 139-055-553
+2025-05-24 17:53:21,070 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 17:53:22,158 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.19.74:5000
+2025-05-24 17:53:22,159 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-24 17:53:22,162 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 17:53:22,716 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 17:53:22,782 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 17:53:22,788 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 17:53:39,440 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 17:53:39,455 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:53:39] "GET /?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748080419126 HTTP/1.1" 200 -
+2025-05-24 17:53:40,183 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:53:40] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-05-24 17:53:50,757 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:53:50] "GET /static/css/styles.css?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748080430448 HTTP/1.1" 200 -
+2025-05-24 17:54:25,448 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 17:54:25,520 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 17:54:25,987 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 17:54:26,035 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 17:54:26,039 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 17:54:39,943 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 17:54:40,016 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 17:54:40,565 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 17:54:40,621 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 17:54:40,624 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 17:55:02,096 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 17:55:02,155 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 17:55:02,585 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 17:55:02,651 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 17:55:02,655 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 17:55:40,670 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 17:55:41,579 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.19.74:5000
+2025-05-24 17:55:41,579 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-24 17:55:41,581 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 17:55:42,177 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 17:55:42,238 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 17:55:42,244 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 17:55:47,260 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 17:55:47,274 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:55:47] "GET /?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748080546951 HTTP/1.1" 200 -
+2025-05-24 17:55:47,592 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:55:47] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 17:55:50,979 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:55:50] "GET /static/css/styles.css?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748080550968 HTTP/1.1" 200 -
+2025-05-24 17:59:01,987 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 17:59:01,993 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:59:01] "GET /?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748080741671 HTTP/1.1" 200 -
+2025-05-24 17:59:02,239 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:59:02] "GET /static/css/index.css HTTP/1.1" 200 -
+2025-05-24 17:59:02,322 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:59:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 17:59:15,501 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:59:15] "GET /pemupukan?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748080755180 HTTP/1.1" 200 -
+2025-05-24 17:59:15,798 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:59:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 17:59:15,840 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 17:59:15] "GET /static/css/forms.css HTTP/1.1" 200 -
+2025-05-24 18:04:56,855 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 18:04:56,917 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:04:57,423 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:04:57,481 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:04:57,485 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:05:02,720 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 18:05:02,790 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:05:03,348 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:05:03,401 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:05:03,404 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:05:10,757 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 18:05:10,808 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:05:11,302 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:05:11,353 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:05:11,357 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:05:20,436 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 18:05:20,521 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:05:21,019 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:05:21,103 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:05:21,109 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:05:26,779 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 18:05:26,844 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:05:27,274 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:05:27,341 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:05:27,345 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:05:38,722 - werkzeug - INFO -  * Detected change in 'C:\\laragon\\www\\jagung2\\app.py', reloading
+2025-05-24 18:05:38,786 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:07:15,154 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:07:16,109 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.19.74:5000
+2025-05-24 18:07:16,109 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-24 18:07:16,113 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:07:16,667 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:07:16,723 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:07:16,729 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:08:02,432 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:08:03,348 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.19.74:5000
+2025-05-24 18:08:03,348 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-24 18:08:03,350 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:08:03,797 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:08:03,857 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:08:03,861 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:08:07,853 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:07] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-24 18:08:08,145 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:08] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-05-24 18:08:08,189 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:08] "GET /static/css/forms.css HTTP/1.1" 200 -
+2025-05-24 18:08:16,980 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 18:08:16,985 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:16] "GET / HTTP/1.1" 200 -
+2025-05-24 18:08:17,232 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:17] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:17,317 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:17] "GET /static/css/index.css HTTP/1.1" 200 -
+2025-05-24 18:08:21,018 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:21] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-24 18:08:21,346 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:21] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:21,349 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:21] "[36mGET /static/css/forms.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:37,589 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 18:08:37,590 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:37] "GET / HTTP/1.1" 200 -
+2025-05-24 18:08:37,790 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:08:37,818 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:37,915 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:37] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:38,735 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.19.74:5000
+2025-05-24 18:08:38,735 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-24 18:08:38,737 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:08:39,319 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:08:39,429 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:08:39,432 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:08:42,103 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:42] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-24 18:08:42,138 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:42] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-05-24 18:08:42,356 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:42] "GET /static/css/forms.css HTTP/1.1" 200 -
+2025-05-24 18:08:43,237 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-24 18:08:48,754 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 18:08:48,755 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:48] "GET / HTTP/1.1" 200 -
+2025-05-24 18:08:49,056 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:49] "GET /static/css/index.css HTTP/1.1" 200 -
+2025-05-24 18:08:49,104 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:49] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:49,896 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:49] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-24 18:08:50,167 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:50] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:50,169 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:50] "[36mGET /static/css/forms.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:50,205 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:50] "GET /static/css/styles.css?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081329889 HTTP/1.1" 200 -
+2025-05-24 18:08:50,859 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:50] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-24 18:08:51,147 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:51] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:51,206 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:51] "[36mGET /static/css/forms.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:52,793 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 18:08:52,794 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:52] "GET / HTTP/1.1" 200 -
+2025-05-24 18:08:53,026 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:53] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:53,047 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:53] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:54,061 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 18:08:54,062 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:54] "GET /?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081334050 HTTP/1.1" 200 -
+2025-05-24 18:08:54,402 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:54] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:08:54,403 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:08:54] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-05-24 18:09:11,774 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:11] "[35m[1mGET /kalkulator HTTP/1.1[0m" 500 -
+2025-05-24 18:09:11,973 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:11] "GET /kalkulator?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-24 18:09:12,128 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:12] "GET /kalkulator?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-24 18:09:12,499 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:12] "GET /kalkulator?__debugger__=yes&cmd=resource&f=console.png&s=UPVYoqzdTrGNtBh6FLc5 HTTP/1.1" 200 -
+2025-05-24 18:09:12,747 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:12] "GET /kalkulator?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-24 18:09:15,471 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:15] "GET /pemupukan HTTP/1.1" 200 -
+2025-05-24 18:09:15,772 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:09:15,818 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:15] "[36mGET /static/css/forms.css HTTP/1.1[0m" 304 -
+2025-05-24 18:09:19,324 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:19] "GET /diagnosis HTTP/1.1" 200 -
+2025-05-24 18:09:19,383 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:09:19,573 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:19] "[36mGET /static/css/forms.css HTTP/1.1[0m" 304 -
+2025-05-24 18:09:21,786 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:21] "[35m[1mGET /kalkulator HTTP/1.1[0m" 500 -
+2025-05-24 18:09:21,974 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:21] "[36mGET /kalkulator?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-24 18:09:21,997 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:21] "[36mGET /kalkulator?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-24 18:09:22,138 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:22] "[36mGET /kalkulator?__debugger__=yes&cmd=resource&f=console.png&s=UPVYoqzdTrGNtBh6FLc5 HTTP/1.1[0m" 304 -
+2025-05-24 18:09:35,146 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:35] "[35m[1mGET /kalkulator HTTP/1.1[0m" 500 -
+2025-05-24 18:09:35,297 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:35] "GET /kalkulator?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-24 18:09:35,472 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:35] "GET /kalkulator?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-24 18:09:35,519 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:09:35] "GET /kalkulator?__debugger__=yes&cmd=resource&f=console.png&s=UPVYoqzdTrGNtBh6FLc5 HTTP/1.1" 200 -
+2025-05-24 18:11:44,853 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:11:44] "GET /kalkulator?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081504476 HTTP/1.1" 200 -
+2025-05-24 18:11:45,037 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:11:45] "GET /static/css/calculator.css HTTP/1.1" 200 -
+2025-05-24 18:11:45,195 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:11:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:22,505 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 18:13:22,509 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:22] "GET /?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081602196 HTTP/1.1" 200 -
+2025-05-24 18:13:22,767 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:22] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:22,829 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:22] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:27,736 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:27] "GET /pemupukan?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081607410 HTTP/1.1" 200 -
+2025-05-24 18:13:27,975 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:27] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:28,060 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:28] "[36mGET /static/css/forms.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:34,566 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:34] "GET /diagnosis?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081614204 HTTP/1.1" 200 -
+2025-05-24 18:13:34,821 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:34] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:34,884 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:34] "[36mGET /static/css/forms.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:42,068 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:42] "[35m[1mGET /panduan?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081621714 HTTP/1.1[0m" 500 -
+2025-05-24 18:13:42,280 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:42] "GET /panduan?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-24 18:13:42,391 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:42] "GET /panduan?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-24 18:13:42,439 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:42] "GET /panduan?__debugger__=yes&cmd=resource&f=console.png&s=UPVYoqzdTrGNtBh6FLc5 HTTP/1.1" 200 -
+2025-05-24 18:13:43,660 - werkzeug - INFO -  * Detected change in 'C:\\Users\\mynam\\AppData\\Roaming\\Python\\Python313\\site-packages\\gunicorn\\systemd.py', reloading
+2025-05-24 18:13:43,664 - werkzeug - INFO -  * Detected change in 'C:\\Users\\mynam\\AppData\\Roaming\\Python\\Python313\\site-packages\\gunicorn\\instrument\\__init__.py', reloading
+2025-05-24 18:13:43,672 - werkzeug - INFO -  * Detected change in 'C:\\Users\\mynam\\AppData\\Roaming\\Python\\Python313\\site-packages\\gunicorn\\config.py', reloading
+2025-05-24 18:13:43,997 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:13:44,003 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:13:44,638 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:13:44,638 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:13:44,640 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:13:44,702 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:13:44,704 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:13:44,704 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:13:44,705 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:13:44,707 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:13:44,709 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:13:50,070 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:50] "GET /budidaya?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081629719 HTTP/1.1" 200 -
+2025-05-24 18:13:50,419 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:50] "GET /static/css/guide.css HTTP/1.1" 200 -
+2025-05-24 18:13:50,495 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:50] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:59,045 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:59] "GET /search?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081638729 HTTP/1.1" 200 -
+2025-05-24 18:13:59,301 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:59] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:13:59,364 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:13:59] "[36mGET /static/css/guide.css HTTP/1.1[0m" 304 -
+2025-05-24 18:14:05,683 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:05] "[35m[1mGET /riwayat?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081645194 HTTP/1.1[0m" 500 -
+2025-05-24 18:14:05,775 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:05] "GET /riwayat?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-24 18:14:06,000 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:06] "GET /riwayat?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-24 18:14:06,022 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:06] "GET /riwayat?__debugger__=yes&cmd=resource&f=console.png&s=SRtPMtkVtqDu8kMg3TGB HTTP/1.1" 200 -
+2025-05-24 18:14:12,656 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:12] "GET /static/css/styles.css?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081652343 HTTP/1.1" 200 -
+2025-05-24 18:14:33,968 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:33] "GET /static/css/forms.css?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081673656 HTTP/1.1" 200 -
+2025-05-24 18:14:41,639 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:41] "GET /pemupukan?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081681325 HTTP/1.1" 200 -
+2025-05-24 18:14:41,886 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:41] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:14:41,974 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:14:41] "[36mGET /static/css/forms.css HTTP/1.1[0m" 304 -
+2025-05-24 18:15:04,148 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:15:05,137 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.19.74:5000
+2025-05-24 18:15:05,137 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-24 18:15:05,139 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:15:05,623 - __main__ - ERROR - File knowledge_base.json tidak ditemukan.
+2025-05-24 18:15:05,680 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:15:05,683 - werkzeug - INFO -  * Debugger PIN: 131-906-057
+2025-05-24 18:15:19,367 - __main__ - WARNING - Gagal memeriksa waktu modifikasi file: [WinError 2] The system cannot find the file specified: 'knowledge_base.json'
+2025-05-24 18:15:19,373 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:15:19] "GET /?id=62a11c32-c474-4b92-a9fa-b5daab46a637&vscodeBrowserReqId=1748081719047 HTTP/1.1" 200 -
+2025-05-24 18:15:19,606 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:15:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-05-24 18:15:19,691 - werkzeug - INFO - 127.0.0.1 - - [24/May/2025 18:15:19] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-05-24 18:28:14,764 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-24 18:28:15,699 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.19.74:5000
+2025-05-24 18:28:15,699 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-24 18:28:15,705 - werkzeug - INFO -  * Restarting with stat
+2025-05-24 18:28:16,306 - __main__ - INFO - Basis Pengetahuan Berhasil Dimuat.
+2025-05-24 18:28:16,371 - werkzeug - WARNING -  * Debugger is active!
+2025-05-24 18:28:16,375 - werkzeug - INFO -  * Debugger PIN: 131-906-057

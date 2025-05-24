@@ -1,0 +1,146 @@
+/* Sistem Pakar Jagung - Main Stylesheet */
+
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FFC107;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --focus-color: rgba(76, 175, 80, 0.25);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    padding: 2rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.navbar-brand i {
+    color: var(--secondary-color);
+    margin-right: 8px;
+}
+
+.card {
+    border-radius: 0.8rem;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: none;
+    padding: 1.25rem;
+}
+
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    flex-shrink: 0;
+}
+
+/* Improved form controls for accessibility */
+.form-control:focus, .form-select:focus, .form-check-input:focus, .btn:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem var(--focus-color);
+}
+
+/* Better contrast in form labels */
+.form-label {
+    font-weight: 500;
+    color: #212529;
+}
+
+/* Skip to main content link for keyboard users */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* High contrast focus states for interactive elements */
+a:focus, button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Improved responsiveness for small screens */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #3d8b40;
+    border-color: #3d8b40;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-warning {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+}
+
+.btn-outline-warning {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-warning:hover {
+    background-color: var(--secondary-color);
+    color: #212529;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    padding: 3px 6px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    color: #212529;
+    font-size: 0.7rem;
+}
