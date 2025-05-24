@@ -19,7 +19,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = os.urandom(24)  # Diperlukan untuk flash messages
 
 # --- Cache Management ---
@@ -445,8 +445,6 @@ def server_error(e):
 if __name__ == '__main__':
     # Muat KB saat aplikasi dimulai
     load_knowledge_base()
-    # For Render deployment, Gunicorn will serve the app
-    # app.run(debug=DEBUG)
-    # Use the PORT environment variable provided by Render
+    # For Render deployment, use PORT environment variable
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=DEBUG)

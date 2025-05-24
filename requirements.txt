@@ -1,2 +1,2 @@
-Flask
-Gunicorn
+Flask==3.0.0
+Gunicorn==21.2.0

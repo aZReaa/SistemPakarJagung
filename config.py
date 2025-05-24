@@ -5,7 +5,7 @@ Sistem Pakar Jagung Terpadu - Konfigurasi Aplikasi
 """
 
 # Konfigurasi aplikasi
-DEBUG = True  # Consider setting to False for production
+DEBUG = os.environ.get('FLASK_ENV') != 'production'  # Auto-detect production
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))  # Define APP_ROOT
 KNOWLEDGE_BASE_PATH = os.path.join(APP_ROOT, "knowledge_base.json")  # Make path absolute
 
