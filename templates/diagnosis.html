@@ -3,51 +3,6 @@
 
 {% block title %}Diagnosis Penyakit Jagung{% endblock %}
 
-{% block extra_css %}
-<style>
-    .gejala-list {
-        max-height: 450px;
-        overflow-y: auto;
-        border: 1px solid #ddd;
-        padding: 15px;
-        border-radius: 8px;
-        background-color: #fcfcfc;
-    }
-    
-    .form-check {
-        padding: 10px;
-        margin-bottom: 5px;
-        border-radius: 5px;
-        transition: background-color 0.2s;
-    }
-    
-    .form-check:hover {
-        background-color: #f0f0f0;
-    }
-    
-    .form-check-input:checked + .form-check-label {
-        color: var(--primary-color);
-        font-weight: 600;
-    }
-    
-    .diagnosis-tips {
-        background-color: #e8f4e3;
-        border-radius: 8px;
-        padding: 15px;
-        margin-bottom: 20px;
-    }
-    
-    .symptoms-counter {
-        background-color: var(--primary-color);
-        color: white;
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        margin-left: 10px;
-    }
-</style>
-{% endblock %}
-
 {% block content %}
 <div class="card">
     <div class="card-header bg-success text-white text-center">
