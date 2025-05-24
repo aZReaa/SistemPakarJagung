@@ -10,6 +10,7 @@
     </div>
     <div class="card-body p-4">
         {% if hasil.utama is defined %}
+            <!-- Struktur dengan utama dan alternatif -->
             <div class="disease-card p-3">
                 <h4>
                     <i class="fas fa-viruses me-2"></i>
@@ -27,20 +28,8 @@
                     <p>{{ hasil.utama.solusi }}</p>
                 </div>
                 
-                <!-- Reasoning Trace Section -->
+                <!-- Gejala yang Cocok -->
                 <div class="mb-3">
-                    <h5><i class="fas fa-code-branch me-2"></i>Jejak Penalaran:</h5>
-                    <div class="reasoning-trace">
-                        <ul class="list-group">
-                            {% for step in hasil.trace %}
-                            <li class="list-group-item">
-                                {{ step }}
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                  <div class="mb-3">
                     <h6><i class="fas fa-check-circle me-2 text-success"></i>Gejala yang Cocok:</h6>
                     <div class="symptom-grid">
                         {% for gejala in hasil.utama.gejala_cocok_desc %}
@@ -78,7 +67,8 @@
                     {% endfor %}
                 {% endif %}
             </div>
-        {% elif hasil.skor and hasil.skor > 0 %}
+        {% elif hasil.skor is defined and hasil.skor > 0 %}
+            <!-- Struktur hasil tunggal -->
             <div class="disease-card p-3">
                 <h4>
                     <i class="fas fa-viruses me-2"></i>
@@ -96,7 +86,8 @@
                     <p>{{ hasil.solusi }}</p>
                 </div>
                 
-                <!-- Reasoning Trace Section -->
+                <!-- Jejak Penalaran -->
+                {% if hasil.trace %}
                 <div class="mb-3">
                     <h5><i class="fas fa-code-branch me-2"></i>Jejak Penalaran:</h5>
                     <div class="reasoning-trace">
@@ -109,7 +100,10 @@
                         </ul>
                     </div>
                 </div>
-                  <div class="mb-3">
+                {% endif %}
+                
+                <!-- Gejala yang Cocok -->
+                <div class="mb-3">
                     <h6><i class="fas fa-check-circle me-2 text-success"></i>Gejala yang Cocok:</h6>
                     <div class="symptom-grid">
                         {% for gejala in hasil.gejala_cocok_desc %}
@@ -132,9 +126,10 @@
                 </div>
             </div>
         {% else %}
+            <!-- Tidak ada hasil atau tidak ditemukan -->
             <div class="alert alert-warning">
-                <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>{{ hasil.nama }}</h4>
-                <p>{{ hasil.solusi }}</p>
+                <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>{{ hasil.nama if hasil.nama else "Tidak Ada Hasil" }}</h4>
+                <p>{{ hasil.solusi if hasil.solusi else "Tidak ada penyakit/hama yang cocok dengan gejala yang dipilih." }}</p>
             </div>
         {% endif %}
         

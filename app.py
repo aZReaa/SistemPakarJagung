@@ -329,16 +329,21 @@ def search():
 @app.route('/pemupukan', methods=['GET'])
 def form_pemupukan():
     """Menampilkan form untuk rekomendasi pemupukan."""
-    # Muat data yang mungkin diperlukan untuk form (misal dari fertilizer_rules.json)
+    # Muat data yang mungkin diperlukan untuk form
     try:
         with open(os.path.join(APP_ROOT,'fertilizer_rules.json'), 'r', encoding='utf-8') as f:
             fertilizer_data = json.load(f)
-        gejala_options = fertilizer_data.get('gejala_options', [])
-        tanah_options = fertilizer_data.get('tanah_options', [])
+        
+        # Ambil daftar gejala dari gejala_modifiers
+        gejala_options = list(fertilizer_data.get('gejala_modifiers', {}).keys())
+        # Ambil daftar jenis tanah dari tanah_modifiers
+        tanah_options = list(fertilizer_data.get('tanah_modifiers', {}).keys())
+        
     except Exception as e:
         logger.error(f"Gagal memuat opsi untuk form pemupukan: {e}")
-        gejala_options = []
-        tanah_options = []
+        gejala_options = ['normal', 'kuning_v', 'ungu', 'pinggir_kuning']
+        tanah_options = ['ringan', 'sedang', 'berat']
+    
     current_year = datetime.now().year
     return render_template('pemupukan.html', gejala_options=gejala_options, tanah_options=tanah_options, year=current_year)
 
@@ -372,18 +377,18 @@ def form_diagnosis():
     try:
         with open(os.path.join(APP_ROOT, 'symptom_list.json'), 'r', encoding='utf-8') as f:
             symptoms_data = json.load(f)
-        gejala_list = symptoms_data.get('symptoms', {}) # {kode: deskripsi}
+        gejala = symptoms_data.get('symptoms', {}) # {kode: deskripsi}
     except Exception as e:
         logger.error(f"Gagal memuat daftar gejala: {e}")
-        gejala_list = {}
+        gejala = {}
     current_year = datetime.now().year
-    return render_template('diagnosis.html', gejala_list=gejala_list, year=current_year)
+    return render_template('diagnosis.html', gejala=gejala, year=current_year)
 
 
 @app.route('/hasil_diagnosis', methods=['POST'])
 def hasil_diagnosis():
     """Memproses form diagnosis dan menampilkan hasil."""
-    selected_gejala_codes = request.form.getlist('gejala')
+    selected_gejala_codes = request.form.getlist('gejala_check')
     if not selected_gejala_codes:
         flash('Pilih setidaknya satu gejala.', 'warning')
         return redirect(request.referrer or url_for('form_diagnosis'))
@@ -400,21 +405,9 @@ def hasil_diagnosis():
         logger.error(f"Gagal memuat deskripsi gejala: {e}")
         selected_symptoms_full = {k: k for k in selected_gejala_codes}
 
-
     current_year = datetime.now().year
-    # Pastikan 'utama' dan 'alternatif' ada di hasil jika itu strukturnya
-    if 'utama' in hasil: # Ini menandakan struktur hasil dengan utama dan alternatif
-        return render_template('hasil_diagnosis.html',
-                               hasil_utama=hasil.get('utama'),
-                               hasil_alternatif=hasil.get('alternatif', []),
-                               gejala_dipilih_map=selected_symptoms_full,
-                               year=current_year)
-    else: # Ini menandakan struktur hasil tunggal atau tidak ditemukan
-        return render_template('hasil_diagnosis.html',
-                               hasil_utama=hasil, # Bisa jadi ini adalah hasil tunggal atau "Tidak Ditemukan"
-                               hasil_alternatif=[],
-                               gejala_dipilih_map=selected_symptoms_full,
-                               year=current_year)
+    return render_template('hasil_diagnosis.html', hasil=hasil, 
+                         gejala_dipilih_map=selected_symptoms_full, year=current_year)
 
 
 @app.route('/refresh_kb', methods=['GET'])

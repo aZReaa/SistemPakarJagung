@@ -17,7 +17,12 @@
     padding: 1.5rem;
     margin: 1.5rem 0;
     border-radius: 5px;
-    display: none;
+    display: none; /* Hidden by default, shown via JavaScript */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.result-card.show {
+    display: block;
 }
 
 .result-card h4 {
@@ -128,7 +133,6 @@
 }
 
 .notification-date {
-    .notification-date {
     font-weight: 600;
     color: var(--primary-color);
     font-size: 0.8rem;

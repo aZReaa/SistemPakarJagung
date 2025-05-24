@@ -3,6 +3,26 @@
 {% block title %}Kalkulator Kebutuhan Benih dan Pupuk Jagung{% endblock %}
 
 {% block content %}
+<style>
+.result-card {
+    background-color: #f8f9fa;
+    border-left: 5px solid #28a745;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 5px;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.notification-item {
+    margin-bottom: 0.5rem;
+}
+
+.notification-card h5 {
+    color: #856404;
+}
+</style>
+
 <div class="row">
     <div class="col-lg-8">
         <div class="card mb-4">
@@ -255,7 +275,234 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>    </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Kalkulator Benih
+    document.getElementById('calculateSeedBtn').addEventListener('click', function() {
+        calculateSeedRequirement();
+    });
+
+    // Kalkulator Pupuk
+    document.getElementById('calculateFertilizerBtn').addEventListener('click', function() {
+        calculateFertilizerRequirement();
+    });
+
+    // Pengingat
+    document.getElementById('addNotificationBtn').addEventListener('click', function() {
+        addNotification();
+    });
+
+    // Load existing notifications
+    loadNotifications();
+});
+
+function calculateSeedRequirement() {
+    // Get input values
+    let landArea = parseFloat(document.getElementById('landArea').value);
+    const landAreaUnit = document.getElementById('landAreaUnit').value;
+    const rowSpacing = parseFloat(document.getElementById('rowSpacing').value);
+    const plantSpacing = parseFloat(document.getElementById('plantSpacing').value);
+    const seedsPerHole = parseInt(document.getElementById('seedsPerHole').value);
+
+    if (!landArea || !rowSpacing || !plantSpacing || !seedsPerHole) {
+        alert('Mohon lengkapi semua field untuk perhitungan benih');
+        return;
+    }
+
+    // Convert to m² if hectare
+    if (landAreaUnit === 'ha') {
+        landArea = landArea * 10000;
+    }
+
+    // Calculate number of plants per m²
+    const rowSpacingM = rowSpacing / 100; // convert cm to m
+    const plantSpacingM = plantSpacing / 100; // convert cm to m
+    const plantsPerM2 = 1 / (rowSpacingM * plantSpacingM);
+    
+    // Calculate total plants and seeds needed
+    const totalPlants = landArea * plantsPerM2;
+    const totalSeeds = totalPlants * seedsPerHole;
+    
+    // Assuming 1000 seeds weight approximately 300-350g for corn
+    const avgSeedWeight = 0.325; // grams per seed
+    const totalWeightKg = (totalSeeds * avgSeedWeight) / 1000;
+    
+    // Add 15% buffer for germination rate
+    const totalWithBuffer = totalWeightKg * 1.15;
+
+    // Display results
+    document.getElementById('resultTotalPlants').textContent = Math.round(totalPlants).toLocaleString();
+    document.getElementById('resultTotalSeeds').textContent = Math.round(totalSeeds).toLocaleString();
+    document.getElementById('resultSeedWeight').textContent = totalWithBuffer.toFixed(2) + ' kg';
+    document.getElementById('resultPlantDensity').textContent = Math.round(plantsPerM2 * 10000).toLocaleString() + ' tanaman/ha';
+
+    // Show result
+    document.getElementById('seedResult').style.display = 'block';
+}
+
+function calculateFertilizerRequirement() {
+    // Get input values
+    let landArea = parseFloat(document.getElementById('landAreaFert').value);
+    const landAreaUnit = document.getElementById('landAreaUnitFert').value;
+    const soilType = document.getElementById('soilType').value;
+    const plantingPhase = document.getElementById('plantingPhase').value;
+
+    if (!landArea || !soilType || !plantingPhase) {
+        alert('Mohon lengkapi semua field untuk perhitungan pupuk');
+        return;
+    }
+
+    // Convert to hectare for calculation
+    let landAreaHa = landAreaUnit === 'ha' ? landArea : landArea / 10000;
+
+    // Base fertilizer rates per hectare (kg/ha)
+    let fertilizerRates = {
+        'dasar': { urea: 200, sp36: 100, kcl: 100, organic: 2000 },
+        'vegetatif': { urea: 150, sp36: 50, kcl: 50, organic: 0 },
+        'generatif': { urea: 100, sp36: 50, kcl: 100, organic: 0 }
+    };
+
+    // Soil type modifiers
+    let soilModifiers = {
+        'rendah': { urea: 1.2, sp36: 1.3, kcl: 1.2, organic: 1.5 },
+        'sedang': { urea: 1.0, sp36: 1.0, kcl: 1.0, organic: 1.0 },
+        'tinggi': { urea: 0.8, sp36: 0.8, kcl: 0.8, organic: 0.8 }
+    };
+
+    // Calculate requirements
+    const baseRates = fertilizerRates[plantingPhase];
+    const modifiers = soilModifiers[soilType];
+
+    const ureaPerHa = Math.round(baseRates.urea * modifiers.urea);
+    const sp36PerHa = Math.round(baseRates.sp36 * modifiers.sp36);
+    const kclPerHa = Math.round(baseRates.kcl * modifiers.kcl);
+    const organicPerHa = Math.round(baseRates.organic * modifiers.organic);
+
+    const ureaTotal = Math.round(ureaPerHa * landAreaHa);
+    const sp36Total = Math.round(sp36PerHa * landAreaHa);
+    const kclTotal = Math.round(kclPerHa * landAreaHa);
+    const organicTotal = Math.round(organicPerHa * landAreaHa);
+
+    // Display results
+    document.getElementById('resultUrea').textContent = ureaTotal + ' kg';
+    document.getElementById('resultUreaHa').textContent = ureaPerHa + ' kg/ha';
+    document.getElementById('resultSP36').textContent = sp36Total + ' kg';
+    document.getElementById('resultSP36Ha').textContent = sp36PerHa + ' kg/ha';
+    document.getElementById('resultKCl').textContent = kclTotal + ' kg';
+    document.getElementById('resultKClHa').textContent = kclPerHa + ' kg/ha';
+    document.getElementById('resultOrganic').textContent = organicTotal + ' kg';
+    document.getElementById('resultOrganicHa').textContent = organicPerHa + ' kg/ha';
+
+    // Show result
+    document.getElementById('fertilizerResult').style.display = 'block';
+}
+
+function addNotification() {
+    const activityType = document.getElementById('activityType').value;
+    const notificationDate = document.getElementById('notificationDate').value;
+    const notes = document.getElementById('notificationNotes').value;
+
+    if (!activityType || !notificationDate) {
+        alert('Mohon pilih jenis kegiatan dan tanggal');
+        return;
+    }
+
+    // Create notification object
+    const notification = {
+        id: Date.now(),
+        activity: activityType,
+        date: notificationDate,
+        notes: notes,
+        created: new Date().toISOString()
+    };
+
+    // Get existing notifications
+    let notifications = JSON.parse(localStorage.getItem('jagungNotifications')) || [];
+    notifications.push(notification);
+    
+    // Save to localStorage
+    localStorage.setItem('jagungNotifications', JSON.stringify(notifications));
+
+    // Reset form
+    document.getElementById('notificationForm').reset();
+
+    // Reload notifications
+    loadNotifications();
+
+    alert('Pengingat berhasil ditambahkan');
+}
+
+function loadNotifications() {
+    const notifications = JSON.parse(localStorage.getItem('jagungNotifications')) || [];
+    const container = document.getElementById('notificationsContainer');
+    const emptyMsg = document.getElementById('emptyNotification');
+
+    if (notifications.length === 0) {
+        emptyMsg.style.display = 'block';
+        return;
+    }
+
+    emptyMsg.style.display = 'none';
+
+    // Sort by date (newest first)
+    notifications.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    // Clear container except empty message
+    const notificationItems = container.querySelectorAll('.notification-item');
+    notificationItems.forEach(item => item.remove());
+
+    notifications.forEach(notification => {
+        const notificationElement = createNotificationElement(notification);
+        container.appendChild(notificationElement);
+    });
+}
+
+function createNotificationElement(notification) {
+    const div = document.createElement('div');
+    div.className = 'notification-item alert alert-info';
+    
+    const date = new Date(notification.date);
+    const formattedDate = date.toLocaleDateString('id-ID', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+
+    const activityNames = {
+        'pemupukan': 'Pemupukan',
+        'penyemprotan': 'Penyemprotan',
+        'pengairan': 'Pengairan', 
+        'penyiangan': 'Penyiangan',
+        'panen': 'Panen'
+    };
+
+    div.innerHTML = `
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <strong>${activityNames[notification.activity]}</strong><br>
+                <small class="text-muted">${formattedDate}</small>
+                ${notification.notes ? `<br><em>${notification.notes}</em>` : ''}
+            </div>
+            <button class="btn btn-sm btn-outline-danger" onclick="deleteNotification(${notification.id})">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    `;
+
+    return div;
+}
+
+function deleteNotification(id) {
+    if (confirm('Hapus pengingat ini?')) {
+        let notifications = JSON.parse(localStorage.getItem('jagungNotifications')) || [];
+        notifications = notifications.filter(n => n.id !== id);
+        localStorage.setItem('jagungNotifications', JSON.stringify(notifications));
+        loadNotifications();
+    }
+}
+</script>
+
 {% endblock %}
